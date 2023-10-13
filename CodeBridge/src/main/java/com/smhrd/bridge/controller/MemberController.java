@@ -2,6 +2,7 @@ package com.smhrd.bridge.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,8 @@ public class MemberController {
 	private MemberService memberService;
 
 	@RequestMapping("MemberJoin.do")
-	public String MemberJoin(Member member) {
+	public String MemberJoin(@RequestBody Member member) {
+		System.out.println("멤버 확인" + member);
 
 		int row = memberService.MemberJoin(member);
 
@@ -29,7 +31,7 @@ public class MemberController {
 
 		return message;
 	}
-	
+
 	@RequestMapping("MemberLogin.do")
 	public void MemberLogin(Member member) {
 		memberService.MemberLogin(member);

@@ -11,12 +11,13 @@ public class MemberService {
 
 	@Autowired
 	private MemberMapper memberMapper;
-	
+
 	public int MemberJoin(Member member) {
+		System.out.println("멤버 다시확인" + member);
 		int row = memberMapper.MemberJoin(member);
-	return row;
+		return row;
 	}
-	
+
 	public String IdCheck(String id) {
 		String result = memberMapper.IdCheck(id);
 
@@ -31,7 +32,6 @@ public class MemberService {
 	}
 
 	public void MemberLogin(Member member) {
-		
-		
+
 	}
 }
