@@ -13,17 +13,18 @@ import com.smhrd.bridge.service.MemberService;
 
 @RestController // 리엑트 서버로 데이터만 응답
 @CrossOrigin("http://localhost:3000")
+@RequestMapping("/Member")
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping("MemberJoin.do")
-	public String MemberJoin(@RequestBody Member member) {
+	@RequestMapping("/join")
+	public String memberJoin(@RequestBody Member member) {
 		System.out.println("MemberJoin진입완료");
 		System.out.println("멤버 확인" + member);
 
-		int row = memberService.MemberJoin(member);
+		int row = memberService.memberJoin(member);
 
 		String message = null;
 		if (row > 0) {
@@ -35,10 +36,10 @@ public class MemberController {
 		return message;
 	}
 
-	@RequestMapping("Login")
-	public String MemberLogin(@RequestBody Map<String, Object> map) {
+	@RequestMapping("/login")
+	public String memberLogin(@RequestBody Map<String, Object> map) {
 		System.out.println("멤버확인" + map);
-		String mem = memberService.MemberLogin(map);
+		String mem = memberService.memberLogin(map);
 		String massage = null;
 		if(mem==null) {
 			massage="N";
@@ -52,11 +53,11 @@ public class MemberController {
 
 	}
 
-	@RequestMapping("IdCheck.do")
-	public String IdCheck(@RequestBody Map<String, Object> map) {
+	@RequestMapping("idCheck")
+	public String idCheck(@RequestBody Map<String, Object> map) {
 		System.out.println("id확인" + map.get("user_id"));
 		String id = (String) map.get("user_id");
-		String result = memberService.IdCheck(id);
+		String result = memberService.idCheck(id);
 		String massage = null;
 
 		if (result == null) {

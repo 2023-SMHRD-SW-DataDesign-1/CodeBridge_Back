@@ -14,14 +14,14 @@ public class MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 
-	public int MemberJoin(Member member) {
+	public int memberJoin(Member member) {
 		System.out.println("멤버 다시확인" + member);
-		int row = memberMapper.MemberJoin(member);
+		int row = memberMapper.memberJoin(member);
 		return row;
 	}
 
-	public String IdCheck(String id) {
-		String result = memberMapper.IdCheck(id);
+	public String idCheck(String id) {
+		String result = memberMapper.idCheck(id);
 		System.out.println("result"+result);
 		
 		// 데이터 가공
@@ -29,8 +29,8 @@ public class MemberService {
 		
 	}
 
-	public String MemberLogin(Map<String, Object> map) {
-		String mem = memberMapper.MemberLogin(map);
+	public String memberLogin(Map<String, Object> map) {
+		String mem = memberMapper.memberLogin(map);
 		return mem;
 	}
 }

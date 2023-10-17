@@ -13,13 +13,13 @@ public interface MemberMapper {
 
 	@Insert("insert into Member values(#{user_id}, #{user_pw}, #{user_name}, "
 			+ "#{user_nick}, #{user_pic}, #{user_phone}, #{user_type}, sysdate())")
-	public int MemberJoin(Member member);
+	public int memberJoin(Member member);
 
 	@Select("select * from Member where user_id = #{id}")
-	public String IdCheck(String id);
+	public String idCheck(String id);
 
 	@Select("select * from Member where user_id = #{user_id} and user_pw = #{user_pw}")
-	public String MemberLogin(Map<String, Object> map);
+	public String memberLogin(Map<String, Object> map);
 	
 	
 	
