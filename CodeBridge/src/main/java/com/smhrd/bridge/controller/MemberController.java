@@ -35,10 +35,20 @@ public class MemberController {
 		return message;
 	}
 
-	@RequestMapping("MemberLogin.do")
-	public void MemberLogin(Member member) {
-		memberService.MemberLogin(member);
-		System.out.println("로그인성공");
+	@RequestMapping("Login")
+	public String MemberLogin(@RequestBody Map<String, Object> map) {
+		System.out.println("멤버확인" + map);
+		String mem = memberService.MemberLogin(map);
+		String massage = null;
+		if(mem==null) {
+			massage="N";
+		}else {
+			massage="Y";
+		}
+		System.out.println("맞는회원정보"+mem);
+		System.out.println(massage);
+		
+		return massage;
 
 	}
 

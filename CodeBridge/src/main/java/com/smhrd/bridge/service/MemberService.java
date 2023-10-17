@@ -1,5 +1,7 @@
 package com.smhrd.bridge.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,8 @@ public class MemberService {
 		
 	}
 
-	public void MemberLogin(Member member) {
-		memberMapper.MemberLogin(member);
+	public String MemberLogin(Map<String, Object> map) {
+		String mem = memberMapper.MemberLogin(map);
+		return mem;
 	}
 }

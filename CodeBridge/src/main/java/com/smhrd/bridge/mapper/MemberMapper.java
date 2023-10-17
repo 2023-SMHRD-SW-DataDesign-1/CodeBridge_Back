@@ -1,5 +1,7 @@
 package com.smhrd.bridge.mapper;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -17,7 +19,7 @@ public interface MemberMapper {
 	public String IdCheck(String id);
 
 	@Select("select * from Member where user_id = #{user_id} and user_pw = #{user_pw}")
-	public void MemberLogin(Member member);
+	public String MemberLogin(Map<String, Object> map);
 	
 	
 	
