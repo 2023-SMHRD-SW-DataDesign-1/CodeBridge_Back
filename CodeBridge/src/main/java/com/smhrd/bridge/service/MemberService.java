@@ -20,18 +20,14 @@ public class MemberService {
 
 	public String IdCheck(String id) {
 		String result = memberMapper.IdCheck(id);
-
-		System.out.println("result : " + result);
+		System.out.println("result"+result);
+		
 		// 데이터 가공
-		if (result == null)
-			result = "사용 가능한 아이디입니다.";
-		else
-			result = "중복된 아이디입니다";
-
 		return result;
+		
 	}
 
 	public void MemberLogin(Member member) {
-
+		memberMapper.MemberLogin(member);
 	}
 }
