@@ -17,4 +17,9 @@ public class CodeService {
 		return row;
 	}
 
+	public String getSubCode(String user_id, int test_num) {
+		String sub_code = codeMapper.getSubCode(user_id, test_num);
+		return sub_code;
+	}
+
 }
