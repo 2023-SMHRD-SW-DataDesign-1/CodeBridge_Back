@@ -77,4 +77,38 @@ public class MemberController {
 		return mem;
 	}
 
+	@RequestMapping("/nameedit")
+	public int nameEdit(@RequestBody Map<String, Object> map) {
+		int row = memberService.nameEdit(map);
+		
+		return row;
+	}
+	
+	@RequestMapping("/nickedit")
+	public int nickEdit(@RequestBody Map<String, Object> map) {
+		int row = memberService.nickEdit(map);
+		System.out.println("업데이트"+row);
+		return row;
+	}
+	
+	@RequestMapping("/phoneedit")
+	public int phoneEdit(@RequestBody Map<String, Object> map) {
+		int row = memberService.phoneEdit(map);
+		
+		return row;
+	}
+	
+	@RequestMapping("/passwordedit")
+	public int passwordEdit(@RequestBody Map<String, Object> map) {
+		int row = memberService.passwordEdit(map);
+		
+		return row;
+	}
+	
+	@RequestMapping("/iddelete")
+	public int idDelete(@RequestBody Map<String, Object> map) {
+		int row = memberService.idDelete(map);
+		
+		return row;
+	}
 }
