@@ -47,7 +47,7 @@ public class TestController {
 		Gson gson = new Gson();
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("test_condition", testItem.get("test_condition"));
-		resultMap.put("test_contents", testItem.get("test_contents"));
+		resultMap.put("problem_contents", testItem.get("test_contents"));
 		resultMap.put("sub_code", sub_code);
 
 		String jsonResult = gson.toJson(resultMap);
