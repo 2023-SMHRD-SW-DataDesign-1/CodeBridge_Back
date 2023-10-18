@@ -1,5 +1,6 @@
 package com.smhrd.bridge.mapper;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
@@ -20,6 +21,9 @@ public interface MemberMapper {
 
 	@Select("select * from Member where user_id = #{user_id} and user_pw = #{user_pw}")
 	public String memberLogin(Map<String, Object> map);
+
+	@Select("select * from Member where user_id = #{user_id}")
+	public ArrayList<Member> memberCheck(Map<String, Object> id);
 	
 	
 	

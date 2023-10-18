@@ -1,5 +1,6 @@
 package com.smhrd.bridge.service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class MemberService {
 
 	public String memberLogin(Map<String, Object> map) {
 		String mem = memberMapper.memberLogin(map);
+		return mem;
+	}
+
+	public ArrayList<Member> memberCheck(Map<String, Object> id) {
+		ArrayList<Member> mem = memberMapper.memberCheck(id);
 		return mem;
 	}
 }

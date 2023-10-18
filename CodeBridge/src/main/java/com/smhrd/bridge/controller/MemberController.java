@@ -1,5 +1,6 @@
 package com.smhrd.bridge.controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,13 @@ public class MemberController {
 		}
 
 		return massage;
+	}
+	@RequestMapping("/memcheck")
+	public ArrayList<Member> memberCheck(@RequestBody Map<String, Object> id) {
+		System.out.println("id확인" +id);
+		ArrayList<Member> mem = memberService.memberCheck(id);
+		System.out.println("mem확인" + mem);
+		return mem;
 	}
 
 }
