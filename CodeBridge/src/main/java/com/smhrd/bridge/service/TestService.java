@@ -12,8 +12,8 @@ public class TestService {
 	@Autowired
 	private TestMapper testmapper;
 
-	public int TestWrite(Test test) {
-		int row = testmapper.TestWrite(test);
+	public int testWrite(Test test) {
+		int row = testmapper.testWrite(test);
 		
 		return row;
 	}

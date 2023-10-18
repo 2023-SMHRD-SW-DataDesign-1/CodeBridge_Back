@@ -11,7 +11,7 @@ public interface TestMapper {
 	
 	@Insert("insert into TestBank values(default, #{test_title}, #{test_level}, "
 			+ "#{test_lang}, #{test_contents}, #{test_condition}, sysdate())")
-	public int TestWrite(Test test);
+	public int testWrite(Test test);
 
 
 
