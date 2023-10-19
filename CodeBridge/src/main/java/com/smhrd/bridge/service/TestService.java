@@ -21,8 +21,13 @@ public class TestService {
 		return row;
 	}
 
-	public Map<String, String> getTestInfo(int test_num) {
-		Map<String, String> testItem = testmapper.getTestInfo(test_num);
+	public List<Map<String, String>> getTestInfo(String test_num) {
+		
+		System.out.println("서비스에서 번호 확인" + test_num);
+		
+		List<Map<String, String>> testItem = testmapper.getTestInfo(test_num);
+		
+		
 
 		return testItem;
 	}

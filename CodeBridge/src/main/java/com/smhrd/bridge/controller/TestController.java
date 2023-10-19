@@ -1,5 +1,6 @@
 package com.smhrd.bridge.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
 import com.smhrd.bridge.entity.Test;
 import com.smhrd.bridge.service.CodeService;
 import com.smhrd.bridge.service.TestService;
@@ -35,25 +35,33 @@ public class TestController {
 	}
 
 	@RequestMapping("mark")
-	public String testMark(@RequestBody Map<String, Object> map) {
+	public List<Map<String, Object>> testMark(@RequestBody Map<String, Object> map) {
 		System.out.println("json 확인" + map);
-		int test_num = (Integer) map.get("test_num");
+		String test_num = (String) map.get("test_num");
+
+		System.out.println("번호 확" + test_num);
+
 		String user_id = (String) map.get("user_id");
-		Map<String, String> testItem = testService.getTestInfo(test_num);
-		String sub_code = codeService.getSubCode(user_id, test_num);
+		List<Map<String, String>> testItem = testService.getTestInfo(test_num);
 
-		System.out.println("testitem확" + testItem);
+		List<Map<String, String>> sub_code = codeService.getSubCode(user_id, test_num);
 
-		Gson gson = new Gson();
-		Map<String, Object> resultMap = new HashMap<>();
-		resultMap.put("test_condition", testItem.get("test_condition"));
-		resultMap.put("problem_contents", testItem.get("test_contents"));
-		resultMap.put("sub_code", sub_code);
+		List<Map<String, Object>> combinedDataList = new ArrayList<>();
 
-		String jsonResult = gson.toJson(resultMap);
-		System.out.println("json 형태로 변환된 결과: " + jsonResult);
+		for (int i = 0; i < testItem.size(); i++) {
+			Map<String, Object> combinedData = new HashMap<>();
+			combinedData.putAll(testItem.get(i)); // testItem의 i번째 아이템을 추가
 
-		return jsonResult;
+			// sub_code의 내용을 combinedData에 추가
+			combinedData.put("sub_code", sub_code.get(i).get("sub_code"));
+
+			combinedDataList.add(combinedData);
+		}
+
+		System.out.println("결합데이터 확인" + combinedDataList);
+
+		return combinedDataList;
+
 	}
 
 }

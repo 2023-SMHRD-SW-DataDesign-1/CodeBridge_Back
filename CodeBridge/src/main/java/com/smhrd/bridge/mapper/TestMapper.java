@@ -1,5 +1,6 @@
 package com.smhrd.bridge.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
@@ -15,7 +16,7 @@ public interface TestMapper {
 			+ "#{test_lang}, #{test_contents}, #{test_condition}, sysdate())")
 	public int testWrite(Test test);
 
-	@Select("select test_contents, test_condition from TestBank where test_num = #{test_num}")
-	public Map<String, String> getTestInfo(int test_num);
+	@Select("select test_num, test_contents, test_condition from TestBank where test_num in (${test_num})")
+	public List<Map<String, String>> getTestInfo(String test_num);
 
 }

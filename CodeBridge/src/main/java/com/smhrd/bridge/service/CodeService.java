@@ -1,5 +1,8 @@
 package com.smhrd.bridge.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +20,8 @@ public class CodeService {
 		return row;
 	}
 
-	public String getSubCode(String user_id, int test_num) {
-		String sub_code = codeMapper.getSubCode(user_id, test_num);
+	public List<Map<String, String>> getSubCode(String user_id, String test_num) {
+		List<Map<String, String>> sub_code = codeMapper.getSubCode(user_id, test_num);
 		return sub_code;
 	}
 
