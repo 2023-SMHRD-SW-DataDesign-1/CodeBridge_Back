@@ -25,7 +25,7 @@ public class TestController {
 	@Autowired
 	private CodeService codeService;
 
-	@RequestMapping("write")
+	@RequestMapping("/write")
 	public int testWrite(@RequestBody Test test) {
 		int row = testService.testWrite(test);
 		System.out.println("컨트롤러 들어왔나" + test);
