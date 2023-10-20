@@ -11,7 +11,7 @@ public interface ClassMapper {
 	
 
 
-	@Insert("insert into Class values(default, 'asd@asd.com', #{class_title},#{class_content}, #{class_target}, #{curriculum}, #{class_startdate},#{class_enddate})")
+	@Insert("insert into Class values(default, #{user_id}, #{class_title},#{class_content}, #{class_target}, #{curriculum}, #{class_startdate},#{class_enddate})")
 	public int classWrite(Classroom classroom);
 	
 	
