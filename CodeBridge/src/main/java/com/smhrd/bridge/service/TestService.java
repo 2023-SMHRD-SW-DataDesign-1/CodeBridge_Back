@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smhrd.bridge.entity.Test;
+import com.smhrd.bridge.entity.TestSubCode;
 import com.smhrd.bridge.mapper.TestMapper;
 
 @Service
@@ -22,14 +23,8 @@ public class TestService {
 		return row;
 	}
 
-	public List<Map<String, String>> getTestInfo(String test_num) {
-		
-		System.out.println("서비스에서 번호 확인" + test_num);
-		
-		List<Map<String, String>> testItem = testmapper.getTestInfo(test_num);
-		
-		
-
+	public List<TestSubCode> getTestInfo(String test_num, String user_id) {		
+		List<TestSubCode> testItem = testmapper.getTestInfo(test_num, user_id);
 		return testItem;
 	}
 
