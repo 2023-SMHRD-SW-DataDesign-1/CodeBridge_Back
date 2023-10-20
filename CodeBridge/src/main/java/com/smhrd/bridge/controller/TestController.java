@@ -46,10 +46,11 @@ public class TestController {
 		return testItem;
 	}
 
+	
 	@RequestMapping("/detail")
-	public ArrayList<Test> getTestList(@RequestBody Map<String, Object> test) {
-		System.out.println("테스트리스트컨트롤" + test);
-		ArrayList<Test> testinfo = testService.getTestList(test);
+	public ArrayList<Test> getTestList() {
+		System.out.println("테스트리스트컨트롤" );
+		ArrayList<Test> testinfo = testService.getTestList();
 		System.out.println("배열 testinfo확인" + testinfo);
 		return testinfo;
 	}

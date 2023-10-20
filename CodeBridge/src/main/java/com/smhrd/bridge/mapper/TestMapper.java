@@ -25,7 +25,10 @@ public interface TestMapper {
 			+ "")
 	public List<TestSubCode> getTestInfo(String test_num, String user_id);
 
-	@Select("select * from TestBank")
-	public ArrayList<Test> getTestList(Map<String, Object> test);
+	@Select("SELECT TestBank.*\r\n"
+			+ "FROM SubjectTest\r\n"
+			+ "JOIN TestBank ON SubjectTest.test_num = TestBank.test_num\r\n"
+			+ "WHERE SubjectTest.sub_num = 1;")
+	public ArrayList<Test> getTestList();
 
 }
