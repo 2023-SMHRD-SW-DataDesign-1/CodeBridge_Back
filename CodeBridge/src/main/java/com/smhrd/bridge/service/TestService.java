@@ -1,5 +1,6 @@
 package com.smhrd.bridge.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,11 @@ public class TestService {
 		
 
 		return testItem;
+	}
+
+	public ArrayList<Test> getTestList(Map<String, Object> test) {
+		ArrayList<Test> testinfo = testmapper.getTestList(test);
+		return testinfo;
 	}
 
 }

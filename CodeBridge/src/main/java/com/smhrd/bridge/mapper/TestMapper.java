@@ -1,5 +1,6 @@
 package com.smhrd.bridge.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,5 +19,8 @@ public interface TestMapper {
 
 	@Select("select test_num, test_contents, test_condition from TestBank where test_num in (${test_num})")
 	public List<Map<String, String>> getTestInfo(String test_num);
+
+	@Select("select * from TestBank")
+	public ArrayList<Test> getTestList(Map<String, Object> test);
 
 }

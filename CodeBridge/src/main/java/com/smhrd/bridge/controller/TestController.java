@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smhrd.bridge.entity.Member;
 import com.smhrd.bridge.entity.Test;
 import com.smhrd.bridge.service.CodeService;
 import com.smhrd.bridge.service.TestService;
@@ -61,7 +62,14 @@ public class TestController {
 		System.out.println("결합데이터 확인" + combinedDataList);
 
 		return combinedDataList;
-
+	}
+	
+	@RequestMapping("/detail")
+	public ArrayList<Test> getTestList(@RequestBody Map<String, Object> test) {
+		System.out.println("테스트리스트컨트롤" +test);
+		ArrayList<Test> testinfo = testService.getTestList(test);
+		System.out.println("배열 testinfo확인" + testinfo);
+		return testinfo;
 	}
 
 }
