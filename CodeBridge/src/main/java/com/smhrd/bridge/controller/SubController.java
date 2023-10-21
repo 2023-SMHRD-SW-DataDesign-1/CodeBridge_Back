@@ -43,5 +43,12 @@ public class SubController {
 
 		return sub_list;
 	}
+	
+	@RequestMapping("/getsub")
+	public List<Subject> getSubs() {
+		List<Subject> sub = subservice.getSubs();
+		System.out.println("subject데이터들"+sub);
+		return sub;
+	}
 
 }

@@ -25,4 +25,9 @@ public class SubService {
 		return sub_list;
 	}
 
+	public List<Subject> getSubs() {
+		List<Subject> sub = subMapper.getSubs();
+		return sub;
+	}
+
 }

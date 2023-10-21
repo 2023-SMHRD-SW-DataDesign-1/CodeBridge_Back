@@ -18,4 +18,10 @@ public interface SubMapper {
 	@Select("select * from Subject where used=0")
 	public List<Subject> subSearch();
 
+	@Select("SELECT Subject.*\r\n"
+			+ "FROM ClassSubject\r\n"
+			+ "INNER JOIN Subject ON ClassSubject.sub_num = Subject.sub_num\r\n"
+			+ "WHERE ClassSubject.class_num = 1;")
+	public List<Subject> getSubs();
+
 }
