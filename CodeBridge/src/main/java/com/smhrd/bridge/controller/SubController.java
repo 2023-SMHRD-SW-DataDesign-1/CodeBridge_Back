@@ -44,4 +44,13 @@ public class SubController {
 		return sub_list;
 	}
 
+	@RequestMapping("/findbyname")
+	public List<Subject> findByName(@RequestBody Map<String, String> map) {
+		System.out.println("들어온 이름" + map.get("sub_lang"));
+		String sub_lang = (String) map.get("sub_lang");
+		List<Subject> sub_list = subservice.findByName(sub_lang);
+
+		return sub_list;
+	}
+
 }

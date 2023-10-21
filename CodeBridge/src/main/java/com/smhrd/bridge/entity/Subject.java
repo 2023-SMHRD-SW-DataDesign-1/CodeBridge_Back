@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Subject {
 	private int sub_num;
-	@NonNull private String user_id;
+	@NonNull private String user_name;
 	@NonNull private String sub_lang;
 	@NonNull private String sub_title;
 	private int used;

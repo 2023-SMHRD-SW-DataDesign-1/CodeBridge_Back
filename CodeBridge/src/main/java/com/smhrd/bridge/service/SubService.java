@@ -25,4 +25,9 @@ public class SubService {
 		return sub_list;
 	}
 
+	public List<Subject> findByName(String sub_lang) {
+		List<Subject> sub_list = subMapper.findByName(sub_lang);
+		return sub_list;
+	}
+
 }
