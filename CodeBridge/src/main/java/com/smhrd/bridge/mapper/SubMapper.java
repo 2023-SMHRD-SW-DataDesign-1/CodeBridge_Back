@@ -21,11 +21,18 @@ public interface SubMapper {
 			+ "WHERE s.used = 0;")
 	public List<Subject> subSearch();
 
+
 	@Select("SELECT s.sub_num, m.user_name, s.sub_lang, s.sub_title, s.used\r\n"
 			+ "FROM Subject s JOIN Member m \r\n"
 			+ "ON s.user_id = m.user_id\r\n"
 			+ "WHERE s.used = 0\r\n"
 			+ "AND s.sub_lang = #{sub_lang}")
 	public List<Subject> findByName(String sub_lang);
+
+	@Select("SELECT Subject.*\r\n"
+			+ "FROM ClassSubject\r\n"
+			+ "INNER JOIN Subject ON ClassSubject.sub_num = Subject.sub_num\r\n"
+			+ "WHERE ClassSubject.class_num = 1;")
+	public List<Subject> getSubs();
 
 }
