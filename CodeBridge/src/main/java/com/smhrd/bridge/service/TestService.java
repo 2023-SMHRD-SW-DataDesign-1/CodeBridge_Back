@@ -28,8 +28,8 @@ public class TestService {
 		return testItem;
 	}
 
-	public ArrayList<Test> getTestList() {
-		ArrayList<Test> testinfo = testmapper.getTestList();
+	public ArrayList<Test> getTestList(int sub_num) {
+		ArrayList<Test> testinfo = testmapper.getTestList(sub_num);
 		return testinfo;
 	}
 

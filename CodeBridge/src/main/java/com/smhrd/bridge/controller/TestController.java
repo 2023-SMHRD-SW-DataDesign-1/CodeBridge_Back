@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.bridge.entity.Test;
@@ -46,11 +47,10 @@ public class TestController {
 		return testItem;
 	}
 
-	
 	@RequestMapping("/detail")
-	public ArrayList<Test> getTestList() {
-		System.out.println("테스트리스트컨트롤" );
-		ArrayList<Test> testinfo = testService.getTestList();
+	public ArrayList<Test> getTestList(@RequestParam int sub_num) {
+		System.out.println("테스트리스트컨트롤");
+		ArrayList<Test> testinfo = testService.getTestList(sub_num);
 		System.out.println("배열 testinfo확인" + testinfo);
 		return testinfo;
 	}
