@@ -14,7 +14,7 @@ public class Member {
 	private String user_name;
 	private String user_nick;
 	private String user_pic;
-	private int user_phone;
+	private String user_phone;
 	private int user_type;
 	private String regi_date;
 
