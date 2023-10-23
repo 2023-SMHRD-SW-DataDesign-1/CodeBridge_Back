@@ -25,9 +25,9 @@ public interface MemberMapper {
 	public String memberLogin(Map<String, Object> map);
 
 	@Select("SELECT cm.class_num, m.* " +
-	        "FROM ClassMember cm " +
-	        "JOIN Member m ON cm.user_id = m.user_id " +
-	        "WHERE cm.user_id = #{user_id}")
+	        "FROM Member m " +
+	        "LEFT JOIN ClassMember cm ON cm.user_id = m.user_id " +
+	        "WHERE m.user_id = #{user_id}")
 	public List<Member> memberCheck(Map<String, Object> id);
 
 	@Update("update Member SET user_name = #{user_name} where user_id = #{user_id}")

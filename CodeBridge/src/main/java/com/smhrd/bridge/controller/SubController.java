@@ -28,7 +28,6 @@ public class SubController {
 		return (row > 0) ? "success" : "false";
 	}
 
-	
 	// 모든 과목 찾기
 	@RequestMapping("/find")
 	public List<Subject> subSearch() {
@@ -37,16 +36,15 @@ public class SubController {
 
 		return sub_list;
 	}
-	
 
+	// 반 넘버로 과목 찾기
 	@RequestMapping("/getsub")
 	public List<Subject> getSubs() {
 		List<Subject> sub = subservice.getSubs();
-		System.out.println("subject데이터들"+sub);
+		System.out.println("subject데이터들" + sub);
 		return sub;
 	}
 
-	
 	// 과목 이름으로 반 검색
 	@RequestMapping("/findbyname")
 	public List<Subject> findByName(@RequestBody Map<String, String> map) {
