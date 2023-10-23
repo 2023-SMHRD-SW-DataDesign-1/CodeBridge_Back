@@ -18,4 +18,5 @@ public class Member {
 	private int user_type;
 	private String regi_date;
 
+	private int class_num;
 }
