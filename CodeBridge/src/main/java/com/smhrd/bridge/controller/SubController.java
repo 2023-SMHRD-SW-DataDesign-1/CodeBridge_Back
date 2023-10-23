@@ -20,22 +20,16 @@ public class SubController {
 	@Autowired
 	private SubService subservice;
 
+	// 과목 작성
 	@RequestMapping("/write")
 	public String subInsert(@RequestBody Map<String, Object> map) {
 		System.out.println("json 확인" + map);
-
 		int row = subservice.subInsert(map);
-
-		String result = null;
-
-		if (row > 0) {
-			result = "success";
-		} else {
-			result = "fail";
-		}
-		return result;
+		return (row > 0) ? "success" : "false";
 	}
 
+	
+	// 모든 과목 찾기
 	@RequestMapping("/find")
 	public List<Subject> subSearch() {
 
@@ -44,6 +38,7 @@ public class SubController {
 		return sub_list;
 	}
 	
+
 	@RequestMapping("/getsub")
 	public List<Subject> getSubs() {
 		List<Subject> sub = subservice.getSubs();
@@ -51,6 +46,8 @@ public class SubController {
 		return sub;
 	}
 
+	
+	// 과목 이름으로 반 검색
 	@RequestMapping("/findbyname")
 	public List<Subject> findByName(@RequestBody Map<String, String> map) {
 		System.out.println("들어온 이름" + map.get("sub_lang"));

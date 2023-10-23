@@ -17,6 +17,7 @@ public class CodeController {
 	@Autowired
 	private CodeService codeService;
 
+	// 학생의 코드 제출
 	@RequestMapping("submit")
 	public String codeSubmit(@RequestBody Code code) {
 
