@@ -35,4 +35,9 @@ public class SubService {
 		return sub;
 	}
 
+	public void updateUsed(String sub_num_list) {
+		subMapper.updateUsed(sub_num_list);
+
+	}
+
 }

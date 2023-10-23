@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.bridge.entity.Classroom;
 import com.smhrd.bridge.service.ClassService;
+import com.smhrd.bridge.service.ClassSubjcetService;
+import com.smhrd.bridge.service.SubService;
 
 @RestController // 리엑트 서버로 데이터만 응답
 @CrossOrigin("http://localhost:3000")
@@ -20,12 +22,36 @@ public class ClassController {
 
 	@Autowired
 	private ClassService classService;
+	@Autowired
+	private SubService subService;
+	@Autowired
+	private ClassSubjcetService classSubjcetService;
 
 	// 반 작성
 	@RequestMapping("/write")
-	public String classWrite(@RequestBody Classroom classroom) {
-		int row = classService.classWrite(classroom);
-		return (row > 0) ? "success" : "false";
+	public void classWrite(@RequestBody Map<String, Object> req) {
+
+		System.out.println("값 확인" + req);
+
+		Classroom classroom = new Classroom();
+
+		// Map에서 필요한 데이터 추출
+		classroom.setUser_id((String) req.get("user_id"));
+		classroom.setClass_title((String) req.get("class_title"));
+		classroom.setClass_content((String) req.get("class_content"));
+		classroom.setClass_target((String) req.get("class_target"));
+		classroom.setCurriculum((String) req.get("curriculum"));
+		classroom.setClass_startdate((String) req.get("class_startdate"));
+		classroom.setClass_enddate((String) req.get("class_enddate"));
+
+		int class_num = classService.classWrite(classroom);
+//		System.out.println("들어온 값" + classroom);
+		String sub_num_list = (String) req.get("sub_num");
+		subService.updateUsed(sub_num_list);
+		System.out.println("클래스 번호 확인" + class_num);
+		classSubjcetService.insertSub(class_num, sub_num_list);
+
+//		return (row > 0) ? "success" : "false";
 	}
 
 	// 반 번호로 반 정보 조회
