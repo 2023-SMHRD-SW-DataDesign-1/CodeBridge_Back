@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ClassSubjcetMapper {
 
 	@Insert("INSERT INTO ClassSubject VALUES (#{class_num}, #{sub_num})")
-	void insertSub(int class_num, String sub_num);
+	int insertSub(int class_num, String sub_num);
 
 }

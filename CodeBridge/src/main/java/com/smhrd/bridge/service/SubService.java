@@ -40,4 +40,9 @@ public class SubService {
 
 	}
 
+	public void updateTested(int sub_num) {
+		subMapper.updateTested(sub_num);
+
+	}
+
 }

@@ -14,5 +14,6 @@ public class Subject {
 	@NonNull private String sub_lang;
 	@NonNull private String sub_title;
 	private int used;
+	private int tested;
 	private String regi_date;
 }

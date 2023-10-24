@@ -29,10 +29,7 @@ public class ClassController {
 
 	// 반 작성
 	@RequestMapping("/write")
-	public void classWrite(@RequestBody Map<String, Object> req) {
-
-		System.out.println("값 확인" + req);
-
+	public String classWrite(@RequestBody Map<String, Object> req) {
 		Classroom classroom = new Classroom();
 
 		// Map에서 필요한 데이터 추출
@@ -45,13 +42,12 @@ public class ClassController {
 		classroom.setClass_enddate((String) req.get("class_enddate"));
 
 		int class_num = classService.classWrite(classroom);
-//		System.out.println("들어온 값" + classroom);
+
 		String sub_num_list = (String) req.get("sub_num");
 		subService.updateUsed(sub_num_list);
-		System.out.println("클래스 번호 확인" + class_num);
-		classSubjcetService.insertSub(class_num, sub_num_list);
+		int row = classSubjcetService.insertSub(class_num, sub_num_list);
 
-//		return (row > 0) ? "success" : "false";
+		return (row > 0) ? "success" : "false";
 	}
 
 	// 반 번호로 반 정보 조회
