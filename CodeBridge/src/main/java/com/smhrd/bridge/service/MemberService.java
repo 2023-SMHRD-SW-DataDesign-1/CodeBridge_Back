@@ -30,8 +30,8 @@ public class MemberService {
 
 	}
 
-	public String memberLogin(Map<String, Object> map) {
-		String mem = memberMapper.memberLogin(map);
+	public String memberLogin(Member member) {
+		String mem = memberMapper.memberLogin(member);
 		return mem;
 	}
 

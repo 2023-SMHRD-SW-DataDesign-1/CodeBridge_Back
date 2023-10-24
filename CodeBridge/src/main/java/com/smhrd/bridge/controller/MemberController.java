@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.bridge.entity.Member;
 import com.smhrd.bridge.service.MemberService;
+import com.smhrd.bridge.service.UserSha256;
 
 @RestController // 리엑트 서버로 데이터만 응답
 @CrossOrigin("http://localhost:3000")
@@ -22,9 +23,12 @@ public class MemberController {
 
 	@RequestMapping("/join")
 	public String memberJoin(@RequestBody Member member) {
-		System.out.println("MemberJoin진입완료");
 		System.out.println("멤버 확인" + member);
 
+		String encryPassword = UserSha256.encrypt(member.getUser_pw());
+		member.setUser_pw(encryPassword);
+		System.out.println("암호화한패스워드:" + member.getUser_pw());
+		
 		int row = memberService.memberJoin(member);
 
 		String message = null;
@@ -38,9 +42,15 @@ public class MemberController {
 	}
 
 	@RequestMapping("/login")
-	public String memberLogin(@RequestBody Map<String, Object> map) {
-		System.out.println("멤버확인" + map);
-		String mem = memberService.memberLogin(map);
+	public String memberLogin(@RequestBody Member member) {
+		System.out.println("멤버확인" + member);
+		
+		String user_pw = member.getUser_pw();
+		member.setUser_pw(UserSha256.encrypt(user_pw));
+		// 암호화 확인
+		System.out.println("user_pw : " + member.getUser_pw());
+		
+		String mem = memberService.memberLogin(member);
 		String massage = null;
 		if (mem == null) {
 			massage = "N";

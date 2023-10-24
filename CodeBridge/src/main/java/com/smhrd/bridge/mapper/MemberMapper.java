@@ -22,7 +22,7 @@ public interface MemberMapper {
 	public String idCheck(String id);
 
 	@Select("select * from Member where user_id = #{user_id} and user_pw = #{user_pw}")
-	public String memberLogin(Map<String, Object> map);
+	public String memberLogin(Member member);
 
 	@Select("SELECT cm.class_num, m.* " +
 	        "FROM Member m " +
