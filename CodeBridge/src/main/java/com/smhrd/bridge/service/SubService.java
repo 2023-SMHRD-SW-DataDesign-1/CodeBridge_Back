@@ -30,8 +30,8 @@ public class SubService {
 		return sub_list;
 	}
 
-	public List<Subject> getSubs() {
-		List<Subject> sub = subMapper.getSubs();
+	public List<Subject> getSubs(int class_num) {
+		List<Subject> sub = subMapper.getSubs(class_num);
 		return sub;
 	}
 
