@@ -27,4 +27,7 @@ public interface TestMapper {
 			+ "JOIN TestBank ON SubjectTest.test_num = TestBank.test_num\r\n" + "WHERE SubjectTest.sub_num = #{sub_num};")
 	public ArrayList<Test> getTestList(int sub_num);
 
+	@Select("select * from TestBank")
+	public List<Test> getAllTest();
+
 }

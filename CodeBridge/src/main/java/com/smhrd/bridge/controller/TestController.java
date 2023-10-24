@@ -23,6 +23,7 @@ public class TestController {
 	@Autowired
 	private TestService testService;
 
+	// 테스트 작성
 	@RequestMapping("/write")
 	public int testWrite(@RequestBody Test test) {
 		int row = testService.testWrite(test);
@@ -32,13 +33,12 @@ public class TestController {
 		return row;
 	}
 
+	// 채점하기 위해 테스트 정보긁어오기
 	@RequestMapping("/mark")
 	public List<TestSubCode> testMark(@RequestBody Map<String, Object> map) {
 		System.out.println("json 확인" + map);
 		String test_num = (String) map.get("test_num");
-
 		System.out.println("번호 확" + test_num);
-
 		String user_id = (String) map.get("user_id");
 		List<TestSubCode> testItem = testService.getTestInfo(test_num, user_id);
 
@@ -47,12 +47,20 @@ public class TestController {
 		return testItem;
 	}
 
+	// sub_num으로 해당 과목 테스트정보 긁어오기
 	@RequestMapping("/detail")
 	public ArrayList<Test> getTestList(@RequestParam int sub_num) {
 		System.out.println("테스트리스트컨트롤");
 		ArrayList<Test> testinfo = testService.getTestList(sub_num);
 		System.out.println("배열 testinfo확인" + testinfo);
 		return testinfo;
+	}
+
+	// 모든 테스트정보 긁어오기
+	@RequestMapping("/getall")
+	public List<Test> getAllTest() {
+		List<Test> test_list = testService.getAllTest();
+		return test_list;
 	}
 
 }
