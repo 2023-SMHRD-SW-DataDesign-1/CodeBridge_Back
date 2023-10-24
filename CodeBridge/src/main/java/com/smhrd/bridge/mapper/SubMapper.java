@@ -25,8 +25,8 @@ public interface SubMapper {
 	public List<Subject> findByName(String sub_lang);
 
 	@Select("SELECT Subject.*\r\n" + "FROM ClassSubject\r\n"
-			+ "INNER JOIN Subject ON ClassSubject.sub_num = Subject.sub_num\r\n" + "WHERE ClassSubject.class_num = 1;")
-	public List<Subject> getSubs();
+			+ "INNER JOIN Subject ON ClassSubject.sub_num = Subject.sub_num\r\n" + "WHERE ClassSubject.class_num = #{class_num};")
+	public List<Subject> getSubs(int class_num);
 
 	@Update("update Subject set used = 1 where sub_num in (${sub_num_list})")
 	public void updateUsed(String sub_num_list);

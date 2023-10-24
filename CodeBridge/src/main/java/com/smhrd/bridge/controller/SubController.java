@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.bridge.entity.Subject;
@@ -39,8 +40,9 @@ public class SubController {
 
 	// 반 넘버로 과목 찾기
 	@RequestMapping("/getsub")
-	public List<Subject> getSubs() {
-		List<Subject> sub = subservice.getSubs();
+	public List<Subject> getSubs(@RequestParam int class_num) {
+		System.out.println("클래스 번호 확인" + class_num);
+		List<Subject> sub = subservice.getSubs(class_num);
 		System.out.println("subject데이터들" + sub);
 		return sub;
 	}

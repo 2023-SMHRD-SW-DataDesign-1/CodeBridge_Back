@@ -23,7 +23,7 @@ public class TestService {
 		return row;
 	}
 
-	public List<TestSubCode> getTestInfo(String test_num, String user_id) {		
+	public List<TestSubCode> getTestInfo(String test_num, String user_id) {
 		List<TestSubCode> testItem = testmapper.getTestInfo(test_num, user_id);
 		return testItem;
 	}
@@ -31,6 +31,11 @@ public class TestService {
 	public ArrayList<Test> getTestList(int sub_num) {
 		ArrayList<Test> testinfo = testmapper.getTestList(sub_num);
 		return testinfo;
+	}
+
+	public List<Test> getAllTest() {
+		List<Test> test_list = testmapper.getAllTest();
+		return test_list;
 	}
 
 }
