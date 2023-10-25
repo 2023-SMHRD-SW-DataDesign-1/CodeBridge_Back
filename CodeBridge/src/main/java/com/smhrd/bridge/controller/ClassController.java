@@ -93,11 +93,8 @@ public class ClassController {
 	// 반 번호로 반 정보 조회
 	@RequestMapping("/findnum")
 	public List<Classroom> findByNum(@RequestBody Map<String, Object> req) {
-		System.out.println("반번호 확인" + req);
 		int class_num = (int) req.get("class_num");
 		List<Classroom> class_item = classService.findByNum(class_num);
-		System.out.println("class아이텝 확인 " + class_item);
-
 		return class_item;
 
 	}

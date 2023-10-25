@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.bridge.entity.Subject;
+import com.smhrd.bridge.entity.SubjectStudent;
+import com.smhrd.bridge.entity.SubjectTest;
 
 @Mapper
 public interface SubMapper {
@@ -34,5 +36,8 @@ public interface SubMapper {
 
 	@Update("update Subject set tested = 1 where sub_num = #{sub_num}")
 	public void updateTested(int sub_num);
+
+	@Select("select * from SubjectStudent where sub_num in (${sub_num}) and user_id = #{user_id}")
+	public List<SubjectStudent> istested(String sub_num, String user_id);
 
 }

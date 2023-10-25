@@ -23,12 +23,11 @@ public class MemberController {
 
 	@RequestMapping("/join")
 	public String memberJoin(@RequestBody Member member) {
-		System.out.println("멤버 확인" + member);
 
 		String encryPassword = UserSha256.encrypt(member.getUser_pw());
 		member.setUser_pw(encryPassword);
 		System.out.println("암호화한패스워드:" + member.getUser_pw());
-		
+
 		int row = memberService.memberJoin(member);
 
 		String message = null;
@@ -43,13 +42,11 @@ public class MemberController {
 
 	@RequestMapping("/login")
 	public String memberLogin(@RequestBody Member member) {
-		System.out.println("멤버확인" + member);
-		
 		String user_pw = member.getUser_pw();
 		member.setUser_pw(UserSha256.encrypt(user_pw));
 		// 암호화 확인
 		System.out.println("user_pw : " + member.getUser_pw());
-		
+
 		String mem = memberService.memberLogin(member);
 		String massage = null;
 		if (mem == null) {
@@ -57,8 +54,6 @@ public class MemberController {
 		} else {
 			massage = "Y";
 		}
-		System.out.println("맞는회원정보" + mem);
-		System.out.println(massage);
 
 		return massage;
 
@@ -66,7 +61,6 @@ public class MemberController {
 
 	@RequestMapping("idCheck")
 	public String idCheck(@RequestBody Map<String, Object> map) {
-		System.out.println("id확인" + map.get("user_id"));
 		String id = (String) map.get("user_id");
 		String result = memberService.idCheck(id);
 		String massage = null;
@@ -83,15 +77,13 @@ public class MemberController {
 	// 아이디로 정보찾기 학생용
 	@RequestMapping("/memcheck")
 	public List<Member> memberCheck(@RequestBody Map<String, Object> id) {
-		System.out.println("들어온 아이디 확인" + id);
 		List<Member> mem = memberService.memberCheck(id);
 		return mem;
 	}
-	
+
 	// 아이디로 정보찾기 선생용
 	@RequestMapping("/memberInfoTeacher")
 	public List<Member> memberInfoTeacher(@RequestBody Map<String, Object> id) {
-		System.out.println("들어온 아이디 확인" + id);
 		List<Member> mem = memberService.memberInfoTeacher(id);
 		return mem;
 	}
@@ -106,7 +98,6 @@ public class MemberController {
 	@RequestMapping("/nickedit")
 	public int nickEdit(@RequestBody Map<String, Object> map) {
 		int row = memberService.nickEdit(map);
-		System.out.println("업데이트" + row);
 		return row;
 	}
 

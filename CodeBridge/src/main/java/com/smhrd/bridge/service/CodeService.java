@@ -25,4 +25,8 @@ public class CodeService {
 		return sub_code;
 	}
 
+	public void updateSubed(int sub_num, String user_id) {
+		codeMapper.updateSubed(sub_num, user_id);
+	}
+
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,13 +41,14 @@ public class CodeController {
 		return message;
 	}
 
+	// 학생 코드 제출 vscscode 버전
 	@PostMapping("/sub-code-list")
-	public void subCodeList(@RequestBody Map<String, Object> req) {
+	public ResponseEntity<String> subCodeList(@RequestBody Map<String, Object> req) {
 		List<Integer> testNums = (List<Integer>) req.get("test_num");
 		String userId = (String) req.get("user_id");
 		List<String> subCodes = (List<String>) req.get("sub_code");
-
 		List<Code> codeSaveList = new ArrayList<>();
+		int sub_num = Integer.parseInt((String) req.get("sub_num"));
 
 		for (int i = 0; i < testNums.size(); i++) {
 			Code codeSave = new Code();
@@ -55,8 +58,10 @@ public class CodeController {
 			codeSave.setRegi_date(new java.sql.Timestamp(System.currentTimeMillis()));
 			codeSaveList.add(codeSave);
 		}
-
 		codeSaveRepository.saveAll(codeSaveList);
+		codeService.updateSubed(sub_num, userId);
+
+		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
 
 }

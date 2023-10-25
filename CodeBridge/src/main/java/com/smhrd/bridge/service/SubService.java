@@ -1,5 +1,7 @@
 package com.smhrd.bridge.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smhrd.bridge.entity.Subject;
+import com.smhrd.bridge.entity.SubjectStudent;
+import com.smhrd.bridge.entity.SubjectTest;
 import com.smhrd.bridge.mapper.SubMapper;
 
 @Service
@@ -42,6 +46,12 @@ public class SubService {
 
 	public void updateTested(int sub_num) {
 		subMapper.updateTested(sub_num);
+
+	}
+
+	public List<SubjectStudent> istested(String sub_num, String user_id) {
+		List<SubjectStudent> tested = subMapper.istested(sub_num, user_id);
+		return tested;
 
 	}
 
