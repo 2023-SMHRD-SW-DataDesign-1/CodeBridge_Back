@@ -16,16 +16,12 @@ public class MemberService {
 	private MemberMapper memberMapper;
 
 	public int memberJoin(Member member) {
-		System.out.println("멤버 다시확인" + member);
 		int row = memberMapper.memberJoin(member);
 		return row;
 	}
 
 	public String idCheck(String id) {
 		String result = memberMapper.idCheck(id);
-		System.out.println("result" + result);
-
-		// 데이터 가공
 		return result;
 
 	}

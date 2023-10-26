@@ -19,4 +19,7 @@ public interface ClassMapper {
 	@Select("select * from Class where class_num = #{class_num}")
 	public List<Classroom> findByNum(int class_num);
 
+	@Select("select * from ClassMember where user_id = #{user_id}")
+	public Integer findById(String user_id);
+
 }

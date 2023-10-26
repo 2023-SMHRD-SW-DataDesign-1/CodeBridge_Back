@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,7 +21,7 @@ import com.smhrd.bridge.service.SubService;
 
 @RestController // 리엑트 서버로 데이터만 응답
 @CrossOrigin("http://localhost:3000")
-@RequestMapping("/Class")
+@RequestMapping("/class")
 public class ClassController {
 
 	@Autowired
@@ -97,6 +99,15 @@ public class ClassController {
 		List<Classroom> class_item = classService.findByNum(class_num);
 		return class_item;
 
+	}
+
+	// 아이디로 속한 반 있는지 검사
+	@GetMapping("/findbyid")
+	public boolean findById(@RequestParam String user_id) {
+		System.out.println("req 확인" + user_id);
+		Integer row = classService.findById(user_id);
+		System.out.println("반 있음?" + row);
+		return (row != null ? true : false);
 	}
 
 }

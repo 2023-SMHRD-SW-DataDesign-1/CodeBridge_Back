@@ -30,4 +30,9 @@ public class ClassService {
 		return class_item;
 	}
 
+	public Integer findById(String user_id) {
+		Integer row = classMapper.findById(user_id);
+		return row;
+	}
+
 }
