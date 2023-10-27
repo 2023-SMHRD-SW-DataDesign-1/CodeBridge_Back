@@ -138,5 +138,11 @@ public class MemberController {
 
 		return result;
 	}
+	
+	@RequestMapping("/your-endpoint")
+	public String handleRequest() {
+		System.out.println("요청옴");
+		return "Request received!";
+	}
 
 }
