@@ -35,4 +35,9 @@ public class ClassService {
 		return row;
 	}
 
+	public List<Classroom> getClassList() {
+		List<Classroom> class_list = classMapper.getClassList();
+		return class_list;
+	}
+
 }

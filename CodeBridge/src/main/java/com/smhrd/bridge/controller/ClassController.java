@@ -110,4 +110,10 @@ public class ClassController {
 		return (row != null ? true : false);
 	}
 
+	@GetMapping("/get-class-list")
+	public List<Classroom> getClassList() {
+		List<Classroom> class_list = classService.getClassList();
+		return class_list;
+	}
+
 }
