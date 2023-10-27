@@ -1,6 +1,7 @@
 package com.smhrd.bridge.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,11 @@ public class ClassService {
 	public List<Classroom> getClassList() {
 		List<Classroom> class_list = classMapper.getClassList();
 		return class_list;
+	}
+
+	public int registClass(Map<String, Object> req) {
+		int row = classMapper.registClass(req);
+		return row;
 	}
 
 }

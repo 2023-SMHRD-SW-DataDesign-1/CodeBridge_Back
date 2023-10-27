@@ -1,6 +1,7 @@
 package com.smhrd.bridge.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -24,5 +25,10 @@ public interface ClassMapper {
 
 	@Select("select * from Class")
 	public List<Classroom> getClassList();
+
+	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, default)")
+	public int registClass(Map<String, Object> req);
+
+
 
 }

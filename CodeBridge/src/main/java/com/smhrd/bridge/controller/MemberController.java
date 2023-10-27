@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.bridge.entity.Member;
@@ -82,9 +84,9 @@ public class MemberController {
 	}
 
 	// 아이디로 정보찾기 선생용
-	@RequestMapping("/memberInfoTeacher")
-	public List<Member> memberInfoTeacher(@RequestBody Map<String, Object> id) {
-		List<Member> mem = memberService.memberInfoTeacher(id);
+	@GetMapping("/memberInfoTeacher")
+	public List<Member> memberInfoTeacher(@RequestParam String user_id) {
+		List<Member> mem = memberService.memberInfoTeacher(user_id);
 		return mem;
 	}
 

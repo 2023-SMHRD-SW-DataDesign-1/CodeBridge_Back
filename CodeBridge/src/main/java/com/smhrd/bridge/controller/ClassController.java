@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -94,9 +95,11 @@ public class ClassController {
 	}
 
 	// 반 번호로 반 정보 조회
-	@RequestMapping("/findnum")
-	public List<Classroom> findByNum(@RequestBody Map<String, Object> req) {
-		int class_num = (int) req.get("class_num");
+	@GetMapping("/findnum")
+	public List<Classroom> findByNum(@RequestParam int class_num) {
+		System.out.println("num 확인" + class_num);
+//		int class_num = (int) req.get("class_num");
+
 		List<Classroom> class_item = classService.findByNum(class_num);
 		return class_item;
 
@@ -115,6 +118,13 @@ public class ClassController {
 	public List<Classroom> getClassList() {
 		List<Classroom> class_list = classService.getClassList();
 		return class_list;
+	}
+
+	@PostMapping("/regist")
+	public String resgistClass(@RequestBody Map<String, Object> req) {
+		System.out.println("받은 값 확인" + req);
+		int row = classService.registClass(req);
+		return (row > 0 ? "success" : "fail");
 	}
 
 }

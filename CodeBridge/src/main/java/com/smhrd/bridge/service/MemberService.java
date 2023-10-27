@@ -66,8 +66,8 @@ public class MemberService {
 		return row;
 	}
 
-	public List<Member> memberInfoTeacher(Map<String, Object> id) {
-		List<Member> mem = memberMapper.memberInfoTeacher(id);
+	public List<Member> memberInfoTeacher(String user_id) {
+		List<Member> mem = memberMapper.memberInfoTeacher(user_id);
 		return mem;
 	}
 }

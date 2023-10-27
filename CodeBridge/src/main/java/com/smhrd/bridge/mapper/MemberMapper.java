@@ -49,7 +49,7 @@ public interface MemberMapper {
 	public int changePic(String user_id, String user_pic);
 
 	@Select("select * from Member where user_id = #{user_id}")
-	public List<Member> memberInfoTeacher(Map<String, Object> id);
+	public List<Member> memberInfoTeacher(String user_id);
 	
 	
 	
