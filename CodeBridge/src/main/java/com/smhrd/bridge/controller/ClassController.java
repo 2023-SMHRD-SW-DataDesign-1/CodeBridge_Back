@@ -35,7 +35,7 @@ public class ClassController {
 	@RequestMapping("/write")
 	public String classWrite(@RequestBody Map<String, Object> req) {
 
-		System.out.println("req확인" + req.get("curriculum"));
+		System.out.println("req확인" + req);
 
 		String curriculumString = (String) req.get("curriculum");
 		List<List<Object>> curriculumList = new ArrayList<>();
@@ -76,6 +76,7 @@ public class ClassController {
 		// Map에서 필요한 데이터 추출
 		classroom.setUser_id((String) req.get("user_id"));
 		classroom.setClass_title((String) req.get("class_title"));
+		classroom.setImg_url((String) req.get("img_url"));
 		classroom.setClass_content((String) req.get("class_content"));
 		classroom.setClass_target((String) req.get("class_target"));
 //		classroom.setCurriculum((String) req.get("curriculum"));

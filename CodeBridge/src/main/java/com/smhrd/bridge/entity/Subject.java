@@ -13,6 +13,7 @@ public class Subject {
 	@NonNull private String user_name;
 	@NonNull private String sub_lang;
 	@NonNull private String sub_title;
+	private String sub_content;
 	private int used;
 	private int tested;
 	private String regi_date;

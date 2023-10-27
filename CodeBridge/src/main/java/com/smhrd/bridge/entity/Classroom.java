@@ -24,6 +24,7 @@ public class Classroom {
 	private int class_num;
 	private String user_id;
 	private String class_title;
+	private String img_url;
 	private String class_content;
 	private String class_target;
 	private String curriculum;
