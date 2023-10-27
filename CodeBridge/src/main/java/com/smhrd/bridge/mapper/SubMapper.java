@@ -15,7 +15,7 @@ import com.smhrd.bridge.entity.SubjectTest;
 @Mapper
 public interface SubMapper {
 
-	@Insert("insert into Subject values(default, #{user_id}, #{sub_lang}, #{sub_title}, 0, 0, sysdate())")
+	@Insert("insert into Subject values(default, #{user_id}, #{sub_lang}, #{sub_title}, #{sub_content}, 0, 0, sysdate())")
 	public int subInsert(Map<String, Object> map);
 
 	@Select("SELECT s.sub_num, m.user_name, s.sub_lang, s.sub_title, s.used\r\n" + "FROM Subject s\r\n"
