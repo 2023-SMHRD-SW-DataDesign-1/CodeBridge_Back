@@ -46,4 +46,9 @@ public class ClassService {
 		return row;
 	}
 
+	public Integer isRegisted(int class_num, String user_id) {
+		Integer row = classMapper.isRegisted(class_num, user_id);
+		return row;
+	}
+
 }

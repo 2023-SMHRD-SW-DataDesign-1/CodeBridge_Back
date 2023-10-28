@@ -29,6 +29,9 @@ public interface ClassMapper {
 	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, default)")
 	public int registClass(Map<String, Object> req);
 
+	@Select("select * from ClassMember where class_num = #{class_num} and user_id = #{user_id}")
+	public Integer isRegisted(int class_num, String user_id);
+
 
 
 }

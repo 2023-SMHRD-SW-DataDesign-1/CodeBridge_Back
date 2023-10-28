@@ -97,8 +97,6 @@ public class ClassController {
 	// 반 번호로 반 정보 조회
 	@GetMapping("/findnum")
 	public List<Classroom> findByNum(@RequestParam int class_num) {
-		System.out.println("num 확인" + class_num);
-//		int class_num = (int) req.get("class_num");
 
 		List<Classroom> class_item = classService.findByNum(class_num);
 		return class_item;
@@ -108,23 +106,29 @@ public class ClassController {
 	// 아이디로 속한 반 있는지 검사
 	@GetMapping("/findbyid")
 	public boolean findById(@RequestParam String user_id) {
-		System.out.println("req 확인" + user_id);
 		Integer row = classService.findById(user_id);
-		System.out.println("반 있음?" + row);
 		return (row != null ? true : false);
 	}
 
+	// 수정필요
 	@GetMapping("/get-class-list")
 	public List<Classroom> getClassList() {
 		List<Classroom> class_list = classService.getClassList();
 		return class_list;
 	}
 
+	// 등록 메서드
 	@PostMapping("/regist")
 	public String resgistClass(@RequestBody Map<String, Object> req) {
-		System.out.println("받은 값 확인" + req);
 		int row = classService.registClass(req);
 		return (row > 0 ? "success" : "fail");
+	}
+
+	// 반 등록 했는지 검사
+	@GetMapping("/registed")
+	public String isRegisted(@RequestParam("class_num") int class_num, @RequestParam("user_id") String user_id) {
+		Integer row = classService.isRegisted(class_num, user_id);
+		return (row == null ? "none" : "registed");
 	}
 
 }
