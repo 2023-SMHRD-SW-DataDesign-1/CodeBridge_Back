@@ -20,17 +20,20 @@ public interface ClassMapper {
 	@Select("select * from Class where class_num = #{class_num}")
 	public List<Classroom> findByNum(int class_num);
 
-	@Select("select * from ClassMember where user_id = #{user_id}")
+	@Select("select class_num from ClassMember where user_id = #{user_id}")
 	public Integer findById(String user_id);
 
 	@Select("select * from Class")
 	public List<Classroom> getClassList();
 
-	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, default)")
+	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, default, default)")
 	public int registClass(Map<String, Object> req);
 
 	@Select("select * from ClassMember where class_num = #{class_num} and user_id = #{user_id}")
 	public Integer isRegisted(int class_num, String user_id);
+
+	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, default, #{isteacher})")
+	public void insertClassTeacher(int class_num, String user_id, int isteacher);
 
 
 

@@ -16,6 +16,7 @@ public class Member {
 	private String user_pic;
 	private String user_phone;
 	private int user_type;
+	private int hasclass;
 	private String regi_date;
 
 	private int class_num;

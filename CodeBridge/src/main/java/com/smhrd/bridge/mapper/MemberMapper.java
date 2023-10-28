@@ -15,7 +15,7 @@ import com.smhrd.bridge.entity.Member;
 public interface MemberMapper {
 
 	@Insert("insert into Member values(#{user_id}, #{user_pw}, #{user_name}, "
-			+ "#{user_nick}, 'https://i.ibb.co/XsypSbQ/profile-01.png', #{user_phone}, #{user_type}, sysdate())")
+			+ "#{user_nick}, 'https://i.ibb.co/XsypSbQ/profile-01.png', #{user_phone}, #{user_type}, null, default)")
 	public int memberJoin(Member member);
 
 	@Select("select * from Member where user_id = #{id}")
@@ -24,10 +24,8 @@ public interface MemberMapper {
 	@Select("select * from Member where user_id = #{user_id} and user_pw = #{user_pw}")
 	public String memberLogin(Member member);
 
-	@Select("SELECT cm.class_num, m.* " +
-	        "FROM Member m " +
-	        "LEFT JOIN ClassMember cm ON cm.user_id = m.user_id " +
-	        "WHERE m.user_id = #{user_id}")
+	@Select("SELECT cm.class_num, m.* " + "FROM Member m " + "LEFT JOIN ClassMember cm ON cm.user_id = m.user_id "
+			+ "WHERE m.user_id = #{user_id}")
 	public List<Member> memberCheck(Map<String, Object> id);
 
 	@Update("update Member SET user_name = #{user_name} where user_id = #{user_id}")
@@ -50,9 +48,8 @@ public interface MemberMapper {
 
 	@Select("select * from Member where user_id = #{user_id}")
 	public List<Member> memberInfoTeacher(String user_id);
-	
-	
-	
-	
-	
+
+	@Update("update Member set hasclass = #{class_num} where user_id = #{user_id}")
+	public void updateHasClass(String user_id, int class_num);
+
 }

@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smhrd.bridge.entity.Classroom;
 import com.smhrd.bridge.service.ClassService;
 import com.smhrd.bridge.service.ClassSubjcetService;
+import com.smhrd.bridge.service.MemberService;
 import com.smhrd.bridge.service.SubService;
 
 @RestController // 리엑트 서버로 데이터만 응답
@@ -31,6 +32,8 @@ public class ClassController {
 	private SubService subService;
 	@Autowired
 	private ClassSubjcetService classSubjcetService;
+	@Autowired
+	private MemberService memberService;
 
 	// 반 작성
 	@RequestMapping("/write")
@@ -63,10 +66,10 @@ public class ClassController {
 
 		ObjectMapper mapper = new ObjectMapper();
 		String curri = null;
+
 		try {
 			curri = mapper.writeValueAsString(curriculumList);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -85,11 +88,25 @@ public class ClassController {
 		classroom.setClass_startdate((String) req.get("class_startdate"));
 		classroom.setClass_enddate((String) req.get("class_enddate"));
 
+		// 적은 정보로 반 등록
 		int class_num = classService.classWrite(classroom);
 
 		String sub_num_list = (String) req.get("sub_num");
+
+		// 사용한 과목 used로 업데이트
 		subService.updateUsed(sub_num_list);
+		// 사용한 과목 반에 등록
 		int row = classSubjcetService.insertSub(class_num, sub_num_list);
+
+		// member정보에 hasclass업데이트
+		String user_id = classroom.getUser_id();
+		memberService.updateHasClass(user_id, class_num);
+		
+		// 선생님 아이디 classmember에 등록
+		// 1번 = 담임, 2번 = 강사
+		int isteacher = 1;
+		classService.insertClassTeacher(class_num, user_id, isteacher);
+
 
 		return (row > 0) ? "success" : "false";
 	}

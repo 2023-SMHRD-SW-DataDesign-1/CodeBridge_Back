@@ -51,4 +51,8 @@ public class ClassService {
 		return row;
 	}
 
+	public void insertClassTeacher(int class_num, String user_id, int isteacher) {
+		classMapper.insertClassTeacher(class_num, user_id, isteacher);
+	}
+
 }

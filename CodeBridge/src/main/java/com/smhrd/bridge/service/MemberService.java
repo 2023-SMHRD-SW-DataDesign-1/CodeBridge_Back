@@ -70,4 +70,10 @@ public class MemberService {
 		List<Member> mem = memberMapper.memberInfoTeacher(user_id);
 		return mem;
 	}
+
+	public void updateHasClass(String user_id, int class_num) {
+		memberMapper.updateHasClass(user_id, class_num);
+
+		
+	}
 }
