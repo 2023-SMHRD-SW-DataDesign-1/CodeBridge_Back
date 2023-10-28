@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
+import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
 
 @Mapper
@@ -35,6 +37,10 @@ public interface ClassMapper {
 	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, default, #{isteacher})")
 	public void insertClassTeacher(int class_num, String user_id, int isteacher);
 
+	@Select("select * from ClassMember where class_num = #{class_num}")
+	public List<ClassMember> getStuList(int class_num);
 
+	@Update("update ClassMember set approved = 1 where user_id = #{user_id}")
+	public int acceptStu(String user_id);
 
 }

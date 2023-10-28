@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
 import com.smhrd.bridge.service.ClassService;
 import com.smhrd.bridge.service.ClassSubjcetService;
@@ -101,12 +102,11 @@ public class ClassController {
 		// member정보에 hasclass업데이트
 		String user_id = classroom.getUser_id();
 		memberService.updateHasClass(user_id, class_num);
-		
+
 		// 선생님 아이디 classmember에 등록
 		// 1번 = 담임, 2번 = 강사
 		int isteacher = 1;
 		classService.insertClassTeacher(class_num, user_id, isteacher);
-
 
 		return (row > 0) ? "success" : "false";
 	}
@@ -146,6 +146,20 @@ public class ClassController {
 	public String isRegisted(@RequestParam("class_num") int class_num, @RequestParam("user_id") String user_id) {
 		Integer row = classService.isRegisted(class_num, user_id);
 		return (row == null ? "none" : "registed");
+	}
+
+	// 등록한 학생들 정보 가져오기
+	@GetMapping("getstu")
+	public List<ClassMember> getStuList(@RequestParam int class_num) {
+		List<ClassMember> stu_list = classService.getStuList(class_num);
+		return stu_list;
+	}
+
+	// 등록한 학생 반 승인
+	@PostMapping("accept")
+	public String acceptStu(@RequestParam String user_id) {
+		int row = classService.acceptStu(user_id);
+		return (row > 0 ? "success" : "fail");
 	}
 
 }

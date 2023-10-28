@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
 import com.smhrd.bridge.mapper.ClassMapper;
 import com.smhrd.bridge.repository.ClassroomRepository;
@@ -53,6 +54,17 @@ public class ClassService {
 
 	public void insertClassTeacher(int class_num, String user_id, int isteacher) {
 		classMapper.insertClassTeacher(class_num, user_id, isteacher);
+	}
+
+	public List<ClassMember> getStuList(int class_num) {
+		List<ClassMember> stu_list = classMapper.getStuList(class_num);
+		return stu_list;
+	}
+
+	public int acceptStu(String user_id) {
+		int row = classMapper.acceptStu(user_id);
+
+		return row;
 	}
 
 }
