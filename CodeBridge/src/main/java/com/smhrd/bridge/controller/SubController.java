@@ -56,17 +56,20 @@ public class SubController {
 	// 학생이 시험을 봤는지 확인하는 엔드포인트
 	@PostMapping("/istested")
 	public List<SubjectStudent> istested(@RequestBody Map<String, Object> req) {
-
 		String sub_num = (String) req.get("sub_num");
 		String user_id = (String) req.get("user_id");
-		System.out.println("sub넘" + sub_num);
-		System.out.println("user_id" + user_id);
-
 		List<SubjectStudent> result = subservice.istested(sub_num, user_id);
-		System.out.println("결과 확인" + result);
-
 		return result;
+	}
 
+	@RequestMapping("get-sub-list")
+	public List<Subject> getSubDetailList(@RequestBody List<Integer> req) {
+		System.out.println("req확인" + req);
+		String reqString = req.toString();
+		reqString = reqString.substring(1, reqString.length() - 1);
+		System.out.println(reqString);
+		List<Subject> sub_list = subservice.getSubDetailList(reqString);
+		return sub_list;
 	}
 
 }

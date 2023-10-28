@@ -40,4 +40,7 @@ public interface SubMapper {
 	@Select("select * from SubjectStudent where sub_num in (${sub_num}) and user_id = #{user_id}")
 	public List<SubjectStudent> istested(String sub_num, String user_id);
 
+	@Select("select * from Subject where sub_num in (${sub_num})")
+	public List<Subject> getSubDetailList(String sub_num);
+
 }
