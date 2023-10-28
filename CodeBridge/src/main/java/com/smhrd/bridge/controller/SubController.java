@@ -64,7 +64,6 @@ public class SubController {
 
 	@RequestMapping("get-sub-list")
 	public List<Subject> getSubDetailList(@RequestBody List<Integer> req) {
-		System.out.println("req확인" + req);
 		String reqString = req.toString();
 		reqString = reqString.substring(1, reqString.length() - 1);
 		System.out.println(reqString);

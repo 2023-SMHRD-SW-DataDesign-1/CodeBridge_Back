@@ -57,7 +57,6 @@ public class SubService {
 
 	public List<Subject> getSubDetailList(String sub_num) {
 		List<Subject> sub_list = subMapper.getSubDetailList(sub_num);
-		System.out.println("sub_list확인" + sub_list);
 		return sub_list;
 	}
 

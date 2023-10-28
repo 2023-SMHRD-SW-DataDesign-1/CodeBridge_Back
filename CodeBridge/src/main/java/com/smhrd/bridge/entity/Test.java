@@ -13,7 +13,8 @@ public class Test {
 	private String test_title;
 	private int test_level;
 	private String test_lang;
-	private String test_contents;
+	private String test_description;
+	private String test_input;
 	private String test_condition;
 	private String regi_date;
 
