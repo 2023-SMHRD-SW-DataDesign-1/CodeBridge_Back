@@ -21,9 +21,14 @@ public class MarkController {
 
 	@PostMapping("result")
 	public String uploadMark(@RequestBody Map<String, Object> req) {
-		System.out.println("요청 확인" + req);
 		int row = markService.uploadMark(req);
 		return (row > 0 ? "Success" : "fail");
+	}
+
+	@PostMapping("submit")
+	public String testSubmit(@RequestBody Map<String, Object> req) {
+		int row = markService.testSubmit(req);
+		return (row > 0 ? "success" : "fail");
 	}
 
 }

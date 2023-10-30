@@ -19,4 +19,9 @@ public class MarkService {
 		return row;
 	}
 
+	public int testSubmit(Map<String, Object> req) {
+		int row = markMapper.testSubmit(req);
+		return row;
+	}
+
 }
