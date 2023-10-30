@@ -46,7 +46,7 @@ public class TestController {
 		}
 		// 마지막 쉼표와 공백 제거
 		String test_condition = resultString.substring(0, resultString.length() - 2);
-		
+
 		System.out.println("제한조건 확인" + test_condition);
 
 		Test test = new Test();
@@ -58,7 +58,7 @@ public class TestController {
 		test.setTest_condition(test_condition);
 
 		int row = testService.testWrite(test);
-		
+
 //		System.out.println("컨트롤러 들어왔나" + test);
 //
 //		System.out.println("row" + row);
@@ -82,9 +82,7 @@ public class TestController {
 	// sub_num으로 해당 과목 테스트정보 긁어오기
 	@RequestMapping("/detail")
 	public ArrayList<Test> getTestList(@RequestParam int sub_num) {
-		System.out.println("테스트리스트컨트롤");
 		ArrayList<Test> testinfo = testService.getTestList(sub_num);
-		System.out.println("배열 testinfo확인" + testinfo);
 		return testinfo;
 	}
 
