@@ -46,6 +46,8 @@ public class TestController {
 		}
 		// 마지막 쉼표와 공백 제거
 		String test_condition = resultString.substring(0, resultString.length() - 2);
+		
+		System.out.println("제한조건 확인" + test_condition);
 
 		Test test = new Test();
 		test.setTest_title(test_title);
