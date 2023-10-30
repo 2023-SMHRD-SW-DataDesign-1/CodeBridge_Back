@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,13 @@ public class SubController {
 		return sub;
 	}
 
+	// 반 넘버로 과목 번호만 찾기
+	@GetMapping("/get-sub-num")
+	public List<Integer> getSubNumList(@RequestParam int class_num) {
+		List<Integer> sub_list = subservice.getSubNumList(class_num);
+		return sub_list;
+	}
+
 	// 과목 이름으로 반 검색
 	@RequestMapping("/findbyname")
 	public List<Subject> findByName(@RequestBody Map<String, String> map) {
@@ -56,6 +64,7 @@ public class SubController {
 	// 학생이 시험을 봤는지 확인하는 엔드포인트
 	@PostMapping("/istested")
 	public List<SubjectStudent> istested(@RequestBody Map<String, Object> req) {
+		System.out.println("req확" + req);
 		String sub_num = (String) req.get("sub_num");
 		String user_id = (String) req.get("user_id");
 		List<SubjectStudent> result = subservice.istested(sub_num, user_id);

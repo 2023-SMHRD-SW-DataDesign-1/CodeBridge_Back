@@ -43,4 +43,7 @@ public interface SubMapper {
 	@Select("select * from Subject where sub_num in (${sub_num})")
 	public List<Subject> getSubDetailList(String sub_num);
 
+	@Select("select sub_num from ClassSubject where class_num = #{class_num}")
+	public List<Integer> getSubNumList(int class_num);
+
 }

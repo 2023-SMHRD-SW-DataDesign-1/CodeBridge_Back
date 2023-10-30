@@ -60,4 +60,9 @@ public class SubService {
 		return sub_list;
 	}
 
+	public List<Integer> getSubNumList(int class_num) {
+		List<Integer> sub_list = subMapper.getSubNumList(class_num);
+		return sub_list;
+	}
+
 }

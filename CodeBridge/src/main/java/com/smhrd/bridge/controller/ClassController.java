@@ -19,11 +19,12 @@ import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
 import com.smhrd.bridge.service.ClassService;
 import com.smhrd.bridge.service.ClassSubjcetService;
+import com.smhrd.bridge.service.CodeService;
 import com.smhrd.bridge.service.MemberService;
 import com.smhrd.bridge.service.SubService;
 
 @RestController // 리엑트 서버로 데이터만 응답
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RequestMapping("/class")
 public class ClassController {
 
@@ -35,6 +36,8 @@ public class ClassController {
 	private ClassSubjcetService classSubjcetService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private CodeService codeService;
 
 	// 반 작성
 	@RequestMapping("/write")
@@ -157,9 +160,13 @@ public class ClassController {
 
 	// 등록한 학생 반 승인
 	@PostMapping("accept")
-	public String acceptStu(@RequestParam String user_id) {
+	public void acceptStu(@RequestBody Map<String, Object> req) {
+		System.out.println("req확인" + req);
+		String user_id = (String) req.get("user_id");
+		List<Integer> sub_num = (List<Integer>) req.get("sub_num");
 		int row = classService.acceptStu(user_id);
-		return (row > 0 ? "success" : "fail");
+		codeService.updateSubed(sub_num, user_id);
+//		return (row > 0 ? "success" : "fail");
 	}
 
 }
