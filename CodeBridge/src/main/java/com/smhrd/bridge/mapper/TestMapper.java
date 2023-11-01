@@ -15,7 +15,7 @@ import com.smhrd.bridge.entity.TestSubCode;
 public interface TestMapper {
 
 	@Insert("insert into TestBank values(default, #{test_title}, #{test_level}, "
-			+ "#{test_lang}, #{test_description}, #{test_input}, #{test_condition}, default)")
+			+ "#{test_lang}, #{test_description}, #{test_condition}, default)")
 	public int testWrite(Test test);
 
 	@Select("SELECT tb.test_num, tb.test_contents, tb.test_condition, cs.sub_code \r\n" + "FROM TestBank tb\r\n"

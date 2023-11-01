@@ -59,7 +59,7 @@ public class CodeController {
 			codeSaveList.add(codeSave);
 		}
 		codeSaveRepository.saveAll(codeSaveList);
-		codeService.updateSubed(sub_num, userId);
+//		codeService.updateSubed(sub_num, userId);
 
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
