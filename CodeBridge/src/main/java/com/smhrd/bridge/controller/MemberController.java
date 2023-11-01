@@ -86,7 +86,9 @@ public class MemberController {
 	// 아이디로 정보찾기 선생용
 	@GetMapping("/memberInfoTeacher")
 	public List<Member> memberInfoTeacher(@RequestParam String user_id) {
+		System.out.println("받은 아이디" + user_id);
 		List<Member> mem = memberService.memberInfoTeacher(user_id);
+		System.out.println("mem확" + mem);
 		return mem;
 	}
 
@@ -140,11 +142,17 @@ public class MemberController {
 
 		return result;
 	}
-	
+
 	@RequestMapping("/your-endpoint")
 	public String handleRequest() {
 		System.out.println("요청옴");
 		return "Request received!";
 	}
 
+	// 멤버 아이디로 vscode 주소받아오기
+	@GetMapping("/getUrl")
+	public String getUrl(@RequestParam String user_id) {
+		String url = memberService.getUrl(user_id);
+		return url;
+	}
 }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class ClassMember {
 	private int class_num;
 	private String user_id;
+	private String user_name;
 	private int approved;
 	private int isteacher;
 

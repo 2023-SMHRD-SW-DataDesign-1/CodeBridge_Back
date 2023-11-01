@@ -52,4 +52,7 @@ public interface MemberMapper {
 	@Update("update Member set hasclass = #{class_num} where user_id = #{user_id}")
 	public void updateHasClass(String user_id, int class_num);
 
+	@Select("select server_url from MemberServer where user_id = #{user_id}")
+	public String getUrl(String user_id);
+
 }

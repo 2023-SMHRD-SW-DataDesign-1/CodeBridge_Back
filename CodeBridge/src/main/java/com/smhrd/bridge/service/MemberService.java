@@ -74,6 +74,10 @@ public class MemberService {
 	public void updateHasClass(String user_id, int class_num) {
 		memberMapper.updateHasClass(user_id, class_num);
 
-		
+	}
+
+	public String getUrl(String user_id) {
+		String url = memberMapper.getUrl(user_id);
+		return url;
 	}
 }
