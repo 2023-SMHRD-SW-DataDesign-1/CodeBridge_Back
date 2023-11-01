@@ -52,6 +52,13 @@ public interface MemberMapper {
 	@Update("update Member set hasclass = #{class_num} where user_id = #{user_id}")
 	public void updateHasClass(String user_id, int class_num);
 
+	@Select("select server_url from IdeMember where used = 0")
+	public List<String> getIdeUrl();
 
+	@Update("update Member set server_url = #{server_url} where user_id = #{user_id}")
+	public int giveIde(Map<String, Object> req);
+
+	@Update("update IdeMember set user_id = #{user_id}, used = 1 where server_url = #{server_url}")
+	public void updateUseIde(Map<String, Object> req);
 
 }

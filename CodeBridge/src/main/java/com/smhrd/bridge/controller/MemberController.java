@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -149,5 +150,19 @@ public class MemberController {
 		return "Request received!";
 	}
 
+	// 부여 안된 ide 가져오기
+	@GetMapping("/getIdeUrl")
+	public List<String> getIdeUrl() {
+		List<String> url = memberService.getIdeUrl();
+		return url;
+	}
+
+	// ide 주소 부여
+	@PostMapping("giveIde")
+	public String giveIde(@RequestBody Map<String, Object> req) {
+		int row = memberService.giveIde(req);
+		memberService.updateUseIde(req);
+		return (row > 0 ? "success" : "fail");
+	}
 
 }

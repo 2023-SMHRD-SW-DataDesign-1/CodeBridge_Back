@@ -76,5 +76,19 @@ public class MemberService {
 
 	}
 
+	public List<String> getIdeUrl() {
+		List<String> url = memberMapper.getIdeUrl();
+		return url;
+	}
+
+	public int giveIde(Map<String, Object> req) {
+		int row = memberMapper.giveIde(req);
+		return row;
+	}
+
+	public void updateUseIde(Map<String, Object> req) {
+		memberMapper.updateUseIde(req);
+
+	}
 
 }
