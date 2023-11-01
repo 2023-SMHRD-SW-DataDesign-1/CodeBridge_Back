@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
+import com.smhrd.bridge.entity.Member;
 import com.smhrd.bridge.service.ClassService;
 import com.smhrd.bridge.service.ClassSubjcetService;
 import com.smhrd.bridge.service.CodeService;
@@ -167,6 +168,13 @@ public class ClassController {
 		int row = classService.acceptStu(user_id);
 		codeService.updateSubed(sub_num, user_id);
 //		return (row > 0 ? "success" : "fail");
+	}
+
+	// 교실에서 학생 리스트 뽑아오기
+	@GetMapping("/getClassStu")
+	public List<Member> getClassStuList(@RequestParam int class_num) {
+		List<Member> mem_List = classService.getClassStuList(class_num);
+		return mem_List;
 	}
 
 }

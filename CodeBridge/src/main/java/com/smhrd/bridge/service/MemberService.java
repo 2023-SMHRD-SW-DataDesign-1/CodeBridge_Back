@@ -76,8 +76,5 @@ public class MemberService {
 
 	}
 
-	public String getUrl(String user_id) {
-		String url = memberMapper.getUrl(user_id);
-		return url;
-	}
+
 }

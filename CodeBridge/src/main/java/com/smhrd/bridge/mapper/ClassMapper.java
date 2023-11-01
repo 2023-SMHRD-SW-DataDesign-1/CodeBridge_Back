@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
+import com.smhrd.bridge.entity.Member;
 
 @Mapper
 public interface ClassMapper {
@@ -42,5 +43,12 @@ public interface ClassMapper {
 
 	@Update("update ClassMember set approved = 1 where user_id = #{user_id}")
 	public int acceptStu(String user_id);
+
+	@Select("SELECT Member.*\r\n"
+			+ "FROM Member\r\n"
+			+ "JOIN ClassMember ON Member.user_id = ClassMember.user_id\r\n"
+			+ "WHERE ClassMember.class_num = #{class_num} AND ClassMember.approved = 1;\r\n"
+			+ "")
+	public List<Member> getClassStuList(int class_num);
 
 }

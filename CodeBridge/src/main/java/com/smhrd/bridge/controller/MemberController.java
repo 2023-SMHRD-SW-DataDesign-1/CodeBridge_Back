@@ -149,10 +149,5 @@ public class MemberController {
 		return "Request received!";
 	}
 
-	// 멤버 아이디로 vscode 주소받아오기
-	@GetMapping("/getUrl")
-	public String getUrl(@RequestParam String user_id) {
-		String url = memberService.getUrl(user_id);
-		return url;
-	}
+
 }

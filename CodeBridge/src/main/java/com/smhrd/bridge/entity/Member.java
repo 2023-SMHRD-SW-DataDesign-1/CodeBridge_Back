@@ -17,6 +17,7 @@ public class Member {
 	private String user_phone;
 	private int user_type;
 	private int hasclass;
+	private String server_url;
 	private String regi_date;
 
 	private int class_num;

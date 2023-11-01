@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
+import com.smhrd.bridge.entity.Member;
 import com.smhrd.bridge.mapper.ClassMapper;
 import com.smhrd.bridge.repository.ClassroomRepository;
 
@@ -65,6 +66,11 @@ public class ClassService {
 		int row = classMapper.acceptStu(user_id);
 
 		return row;
+	}
+
+	public List<Member> getClassStuList(int class_num) {
+		List<Member> mem_list = classMapper.getClassStuList(class_num);
+		return mem_list;
 	}
 
 }
