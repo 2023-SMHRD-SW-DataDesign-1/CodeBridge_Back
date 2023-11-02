@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.bridge.entity.Subject;
 import com.smhrd.bridge.entity.SubjectStudent;
+import com.smhrd.bridge.entity.TotalScore;
 import com.smhrd.bridge.service.SubService;
 
 @RestController
@@ -41,6 +42,7 @@ public class SubController {
 	// 반 넘버로 과목 찾기
 	@RequestMapping("/getsub")
 	public List<Subject> getSubs(@RequestParam int class_num) {
+		System.out.println("겟섭 옴");
 		List<Subject> sub = subservice.getSubs(class_num);
 		return sub;
 	}
@@ -78,6 +80,16 @@ public class SubController {
 		System.out.println(reqString);
 		List<Subject> sub_list = subservice.getSubDetailList(reqString);
 		return sub_list;
+	}
+
+	// 반 번호로 과목들 시험 총점 구하기
+	@GetMapping("total-score")
+	public List<TotalScore> getTotalScore(@RequestParam int class_num) {
+		List<Integer> sub_list = subservice.getSubNumList(class_num);
+		String sub_num = sub_list.toString().substring(1, sub_list.toString().length() - 1);
+		System.out.println("섭넘 확인" + sub_num);
+		List<TotalScore> score_list = subservice.getTotalScore(sub_num);
+		return score_list;
 	}
 
 }

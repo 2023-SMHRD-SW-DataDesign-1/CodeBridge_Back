@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.smhrd.bridge.entity.Subject;
 import com.smhrd.bridge.entity.SubjectStudent;
 import com.smhrd.bridge.entity.SubjectTest;
+import com.smhrd.bridge.entity.TotalScore;
 import com.smhrd.bridge.mapper.SubMapper;
 
 @Service
@@ -63,6 +64,11 @@ public class SubService {
 	public List<Integer> getSubNumList(int class_num) {
 		List<Integer> sub_list = subMapper.getSubNumList(class_num);
 		return sub_list;
+	}
+
+	public List<TotalScore> getTotalScore(String sub_num) {
+		List<TotalScore> score_list = subMapper.getTotalScore(sub_num);
+		return score_list;
 	}
 
 }

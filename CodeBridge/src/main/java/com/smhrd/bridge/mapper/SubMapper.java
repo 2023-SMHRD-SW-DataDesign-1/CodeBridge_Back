@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import com.smhrd.bridge.entity.Subject;
 import com.smhrd.bridge.entity.SubjectStudent;
 import com.smhrd.bridge.entity.SubjectTest;
+import com.smhrd.bridge.entity.TotalScore;
 
 @Mapper
 public interface SubMapper {
@@ -45,5 +46,14 @@ public interface SubMapper {
 
 	@Select("select sub_num from ClassSubject where class_num = #{class_num}")
 	public List<Integer> getSubNumList(int class_num);
+
+	@Select("SELECT sub_num, \r\n"
+			+ "       SUM(test_level) * 10 as score\r\n"
+			+ "FROM   SubjectTest \r\n"
+			+ "JOIN   TestBank \r\n"
+			+ "ON     SubjectTest.test_num = TestBank.test_num \r\n"
+			+ "WHERE  sub_num IN (${sub_num}) \r\n"
+			+ "GROUP BY sub_num;")
+	public List<TotalScore> getTotalScore(String sub_num);
 
 }

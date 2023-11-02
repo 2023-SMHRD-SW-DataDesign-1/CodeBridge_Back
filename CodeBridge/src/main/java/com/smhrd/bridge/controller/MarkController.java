@@ -38,6 +38,7 @@ public class MarkController {
 	// 반번호, 학생 아이디로 해당 학생 성적 조회
 	@RequestMapping("markresult")
 	public List<MarkResult> getMarkScore(@RequestBody Map<String, Object> req) {
+		System.out.println("마크리절트 옴");
 		List<Integer> sub_list = markService.getMarkScore(req);
 		String sub_num = sub_list.toString().substring(1, sub_list.toString().length() - 1);
 		String user_id = (String) req.get("user_id");
