@@ -87,9 +87,7 @@ public class MemberController {
 	// 아이디로 정보찾기 선생용
 	@GetMapping("/memberInfoTeacher")
 	public List<Member> memberInfoTeacher(@RequestParam String user_id) {
-		System.out.println("받은 아이디" + user_id);
 		List<Member> mem = memberService.memberInfoTeacher(user_id);
-		System.out.println("mem확" + mem);
 		return mem;
 	}
 
