@@ -25,4 +25,12 @@ public class ChatController {
     	System.out.println("컨트롤");
         return chatMessage;
     }
+    
+    @MessageMapping("/chat.requestHelp")
+    @SendTo("/topic/helpResponse")
+    public String requestHelp(String user_name) {
+        System.out.println("도움요청이 들어왔습니다. 이름: " + user_name);
+        return user_name;
+    }
+
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ChatMessage {
+	private String nick;
 	private String name;
 	private String content;
 }
