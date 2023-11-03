@@ -18,7 +18,7 @@ import com.smhrd.bridge.repository.CodeSaveRepository;
 import com.smhrd.bridge.service.CodeService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RequestMapping("/code")
 public class CodeController {
 

@@ -13,7 +13,7 @@ import com.smhrd.bridge.service.SubService;
 import com.smhrd.bridge.service.SubjectTestService;
 
 @RestController // 리엑트 서버로 데이터만 응답
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RequestMapping("/subjecTtest")
 public class SubjectTestController {
 

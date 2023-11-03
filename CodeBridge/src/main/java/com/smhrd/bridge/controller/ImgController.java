@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.smhrd.bridge.util.FileUploadUtil;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RequestMapping("/Img")
 public class ImgController {
 

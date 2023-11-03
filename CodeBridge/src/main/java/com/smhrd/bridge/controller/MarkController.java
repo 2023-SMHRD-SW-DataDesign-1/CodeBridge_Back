@@ -16,7 +16,7 @@ import com.smhrd.bridge.entity.MarkResult;
 import com.smhrd.bridge.service.MarkService;
 
 @RestController // 리엑트 서버로 데이터만 응답
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RequestMapping("/mark")
 public class MarkController {
 

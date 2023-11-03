@@ -18,7 +18,7 @@ import com.smhrd.bridge.entity.TotalScore;
 import com.smhrd.bridge.service.SubService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RequestMapping("/sub")
 public class SubController {
 
