@@ -91,4 +91,9 @@ public class MemberService {
 
 	}
 
+	public int hisEdit(Map<String, Object> req) {
+		int row = memberMapper.hisEdit(req);
+		return row;
+	}
+
 }

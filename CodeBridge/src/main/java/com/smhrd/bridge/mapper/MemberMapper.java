@@ -15,7 +15,7 @@ import com.smhrd.bridge.entity.Member;
 public interface MemberMapper {
 
 	@Insert("insert into Member values(#{user_id}, #{user_pw}, #{user_name}, "
-			+ "#{user_nick}, 'https://i.ibb.co/XsypSbQ/profile-01.png', #{user_phone}, #{user_type}, null, null, default)")
+			+ "#{user_nick}, 'https://i.ibb.co/XsypSbQ/profile-01.png', #{user_phone}, #{user_type}, null, null, null, default)")
 	public int memberJoin(Member member);
 
 	@Select("select * from Member where user_id = #{id}")
@@ -60,5 +60,8 @@ public interface MemberMapper {
 
 	@Update("update IdeMember set user_id = #{user_id}, used = 1 where server_url = #{server_url}")
 	public void updateUseIde(Map<String, Object> req);
+
+	@Update("update Member set user_his = #{user_his} where user_id = #{user_id}")
+	public int hisEdit(Map<String, Object> req);
 
 }

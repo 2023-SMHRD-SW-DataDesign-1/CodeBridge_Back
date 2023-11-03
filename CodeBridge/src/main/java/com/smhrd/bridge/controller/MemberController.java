@@ -118,6 +118,14 @@ public class MemberController {
 		return row;
 	}
 
+	// 약력 수정
+	@RequestMapping("/hisedit")
+	public String hisEdit(@RequestBody Map<String, Object> req) {
+		int row = memberService.hisEdit(req);
+
+		return (row > 0 ? "success" : "fail");
+	}
+
 	@RequestMapping("/iddelete")
 	public int idDelete(@RequestBody Map<String, Object> map) {
 		int row = memberService.idDelete(map);
