@@ -35,7 +35,7 @@ public interface ClassMapper {
 	@Select("select * from ClassMember where class_num = #{class_num} and user_id = #{user_id}")
 	public Integer isRegisted(int class_num, String user_id);
 
-	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, default, #{isteacher})")
+	@Insert("insert into ClassMember values(#{class_num}, #{user_id}, null, default, #{isteacher})")
 	public void insertClassTeacher(int class_num, String user_id, int isteacher);
 
 	@Select("select * from ClassMember where class_num = #{class_num}")

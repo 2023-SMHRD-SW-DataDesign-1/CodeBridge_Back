@@ -1,6 +1,5 @@
 package com.smhrd.bridge.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smhrd.bridge.entity.ClassMember;
 import com.smhrd.bridge.entity.Classroom;
 import com.smhrd.bridge.entity.Member;
@@ -44,41 +41,18 @@ public class ClassController {
 	@RequestMapping("/write")
 	public String classWrite(@RequestBody Map<String, Object> req) {
 
-		System.out.println("req확인" + req);
+		System.out.println("req확인" + req.get("curriculum"));
+		List<Map<String, String>> curriculumList = (List<Map<String, String>>) req.get("curriculum");
+		StringBuilder contentStringBuilder = new StringBuilder();
 
-		String curriculumString = (String) req.get("curriculum");
-		List<List<Object>> curriculumList = new ArrayList<>();
-
-		String[] sections = curriculumString.split(",,");
-		for (String section : sections) {
-			String[] parts = section.split("::");
-			String week = parts[0].trim();
-			String details = parts[1].trim();
-
-			String[] detailParts = details.split(",");
-			int subjectNumber = Integer.parseInt(detailParts[0].trim().split(":")[1].trim());
-			String language = detailParts[1].trim().split(":")[1].trim();
-			String instructor = detailParts[2].trim().split(":")[1].trim();
-			String lectureTitle = detailParts[3].trim().split(":")[1].trim();
-
-			List<Object> curriculumItem = new ArrayList<>();
-			curriculumItem.add(week);
-			curriculumItem.add(subjectNumber);
-			curriculumItem.add(lectureTitle);
-
-			curriculumList.add(curriculumItem);
+		for (Map<String, String> curriculumItem : curriculumList) {
+			String content = curriculumItem.get("content");
+			contentStringBuilder.append(content).append(", ");
 		}
 
-		ObjectMapper mapper = new ObjectMapper();
-		String curri = null;
+		String contentString = contentStringBuilder.toString().replaceAll(", $", ""); // 끝에 추가된 ", " 제거
 
-		try {
-			curri = mapper.writeValueAsString(curriculumList);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println("curriculumList 값 확인" + curriculumList);
+		System.out.println("contentString 확인: " + contentString);
 
 		Classroom classroom = new Classroom();
 
@@ -88,8 +62,7 @@ public class ClassController {
 		classroom.setImg_url((String) req.get("img_url"));
 		classroom.setClass_content((String) req.get("class_content"));
 		classroom.setClass_target((String) req.get("class_target"));
-//		classroom.setCurriculum((String) req.get("curriculum"));
-		classroom.setCurriculum(curri);
+		classroom.setCurriculum(contentString);
 		classroom.setClass_startdate((String) req.get("class_startdate"));
 		classroom.setClass_enddate((String) req.get("class_enddate"));
 
