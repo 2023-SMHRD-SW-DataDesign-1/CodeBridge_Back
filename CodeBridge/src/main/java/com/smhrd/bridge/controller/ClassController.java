@@ -42,17 +42,21 @@ public class ClassController {
 	public String classWrite(@RequestBody Map<String, Object> req) {
 
 		System.out.println("req확인" + req.get("curriculum"));
-		List<Map<String, String>> curriculumList = (List<Map<String, String>>) req.get("curriculum");
-		StringBuilder contentStringBuilder = new StringBuilder();
+		List<Map<String, Object>> curriculumList = (List<Map<String, Object>>) req.get("curriculum");
+		StringBuilder result = new StringBuilder();
 
-		for (Map<String, String> curriculumItem : curriculumList) {
-			String content = curriculumItem.get("content");
-			contentStringBuilder.append(content).append(", ");
+		for (Map<String, Object> entry : curriculumList) {
+			int sub_num = (int) entry.get("sub_num");
+			String content = (String) entry.get("content");
+			result.append("[").append(sub_num).append(": ").append(content).append("], ");
 		}
 
-		String contentString = contentStringBuilder.toString().replaceAll(", $", ""); // 끝에 추가된 ", " 제거
+		String finalResult = result.toString();
+		if (finalResult.endsWith(", ")) {
+			finalResult = finalResult.substring(0, finalResult.length() - 2); // 마지막 ", " 제거
+		}
 
-		System.out.println("contentString 확인: " + contentString);
+		System.out.println(finalResult);
 
 		Classroom classroom = new Classroom();
 
@@ -62,7 +66,7 @@ public class ClassController {
 		classroom.setImg_url((String) req.get("img_url"));
 		classroom.setClass_content((String) req.get("class_content"));
 		classroom.setClass_target((String) req.get("class_target"));
-		classroom.setCurriculum(contentString);
+		classroom.setCurriculum(finalResult);
 		classroom.setClass_startdate((String) req.get("class_startdate"));
 		classroom.setClass_enddate((String) req.get("class_enddate"));
 
