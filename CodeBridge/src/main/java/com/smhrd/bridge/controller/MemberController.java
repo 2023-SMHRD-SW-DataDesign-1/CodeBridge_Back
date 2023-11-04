@@ -17,7 +17,7 @@ import com.smhrd.bridge.service.MemberService;
 import com.smhrd.bridge.service.UserSha256;
 
 @RestController // 리엑트 서버로 데이터만 응답
-@CrossOrigin("*")
+@CrossOrigin("http://43.200.137.185:3000")
 @RequestMapping("/member")
 public class MemberController {
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.smhrd.bridge.entity.ChatMessage;
 
 @Controller
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 @RequestMapping("/websocket")
 public class ChatController {
     @MessageMapping("/chat.sendMessage")

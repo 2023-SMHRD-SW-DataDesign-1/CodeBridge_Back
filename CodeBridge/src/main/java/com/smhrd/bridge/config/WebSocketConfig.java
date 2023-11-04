@@ -9,7 +9,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker
-@CrossOrigin(origins = "http://localhost:3000") // 원하는 클라이언트 도메인 및 포트를 여기에 추가
+@CrossOrigin(origins = "*") // 원하는 클라이언트 도메인 및 포트를 여기에 추가
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
