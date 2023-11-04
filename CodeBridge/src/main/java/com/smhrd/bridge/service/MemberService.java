@@ -96,4 +96,9 @@ public class MemberService {
 		return row;
 	}
 
+	public void deleteClass(int class_num) {
+		memberMapper.deleteClass(class_num);
+		
+	}
+
 }

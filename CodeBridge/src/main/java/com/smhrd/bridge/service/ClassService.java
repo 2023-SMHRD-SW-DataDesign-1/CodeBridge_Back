@@ -73,4 +73,16 @@ public class ClassService {
 		return mem_list;
 	}
 
+	public void deleteClassSubject(int class_num) {
+		classMapper.deleteClassSubject(class_num);
+		
+	}
+
+	public int deleteClass(int class_num) {
+		int row = classMapper.deleteClass(class_num);
+		return row;
+	}
+
+
+
 }
