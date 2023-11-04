@@ -45,6 +45,7 @@ public class MemberController {
 
 	@RequestMapping("/login")
 	public String memberLogin(@RequestBody Member member) {
+		System.out.println("학생");
 		String user_pw = member.getUser_pw();
 		member.setUser_pw(UserSha256.encrypt(user_pw));
 		// 암호화 확인
