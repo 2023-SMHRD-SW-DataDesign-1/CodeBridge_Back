@@ -17,7 +17,7 @@ public class CorsConfig {
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
 		// 클라이언트 도메인 및 포트를 여기에 추가
-		config.setAllowedOriginPatterns(Arrays.asList("http://localhost:3000", "http://codebridge.site:3000"));
+		config.setAllowedOriginPatterns(Arrays.asList("http://localhost:3000", "http://codebridge.site"));
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);
