@@ -138,13 +138,13 @@ public class ClassController {
 
 	// 등록한 학생 반 승인
 	@PostMapping("accept")
-	public void acceptStu(@RequestBody Map<String, Object> req) {
+	public String acceptStu(@RequestBody Map<String, Object> req) {
 		System.out.println("req확인" + req);
 		String user_id = (String) req.get("user_id");
 		List<Integer> sub_num = (List<Integer>) req.get("sub_num");
 		int row = classService.acceptStu(user_id);
 		codeService.updateSubed(sub_num, user_id);
-//		return (row > 0 ? "success" : "fail");
+		return (row > 0 ? "success" : "fail");
 	}
 
 	// 교실에서 학생 리스트 뽑아오기

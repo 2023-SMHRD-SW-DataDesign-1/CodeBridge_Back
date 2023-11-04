@@ -42,10 +42,10 @@ public class TestController {
 		for (Map<String, Object> item : test_condition_list) {
 			String id = (String) item.get("id");
 			String value = (String) item.get("value");
-			resultString.append(id).append(" : ").append(value).append(", ");
+			resultString.append(id).append(" : ").append(value).append("brbr");
 		}
 		// 마지막 쉼표와 공백 제거
-		String test_condition = resultString.substring(0, resultString.length() - 2);
+		String test_condition = resultString.substring(0, resultString.length() - 4);
 
 		System.out.println("제한조건 확인" + test_condition);
 
@@ -57,7 +57,7 @@ public class TestController {
 		test.setTest_input(test_input);
 		test.setTest_condition(test_condition);
 
-		int row = testService.testWrite(test);
+//		int row = testService.testWrite(test);
 
 //		System.out.println("컨트롤러 들어왔나" + test);
 //
