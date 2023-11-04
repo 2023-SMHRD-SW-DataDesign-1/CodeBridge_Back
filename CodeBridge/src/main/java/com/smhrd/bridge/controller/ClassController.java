@@ -153,5 +153,21 @@ public class ClassController {
 		List<Member> mem_List = classService.getClassStuList(class_num);
 		return mem_List;
 	}
+	
+	// 반 삭제버튼 눌러버렸
+	@PostMapping("/delete")
+	public int deleteClass(@RequestParam int class_num) {
+		System.out.println("class_num"+class_num);
+		//ClassMember 삭제
+		memberService.deleteClass(class_num);
+		//과목 used 0으로 변경
+		subService.updateSubject(class_num);
+		//ClassSubject삭제
+		classService.deleteClassSubject(class_num);
+		//반 삭제
+		int row =classService.deleteClass(class_num);
+		
+		return row;
+	}
 
 }

@@ -71,4 +71,8 @@ public class SubService {
 		return score_list;
 	}
 
+	public void updateSubject(int class_num) {
+		subMapper.updateSubject(class_num);
+		
+	}
 }

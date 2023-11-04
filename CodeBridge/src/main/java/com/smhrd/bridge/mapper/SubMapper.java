@@ -56,4 +56,9 @@ public interface SubMapper {
 			+ "GROUP BY sub_num;")
 	public List<TotalScore> getTotalScore(String sub_num);
 
+	@Update("UPDATE Subject\r\n"
+			+ "JOIN ClassSubject ON Subject.sub_num = ClassSubject.sub_num\r\n"
+			+ "SET Subject.used = 0\r\n"
+			+ "WHERE ClassSubject.class_num = #{class_num}")
+	public void updateSubject(int class_num);
 }

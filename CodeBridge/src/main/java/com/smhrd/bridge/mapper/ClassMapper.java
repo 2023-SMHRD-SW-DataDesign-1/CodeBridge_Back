@@ -3,6 +3,7 @@ package com.smhrd.bridge.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -50,5 +51,12 @@ public interface ClassMapper {
 			+ "WHERE ClassMember.class_num = #{class_num} AND ClassMember.approved = 1;\r\n"
 			+ "")
 	public List<Member> getClassStuList(int class_num);
+
+	@Delete("delete FROM ClassSubject where class_num= #{class_num}")
+	public void deleteClassSubject(int class_num);
+
+	@Delete("delete FROM Class where class_num = #{class_num}")
+	public int deleteClass(int class_num);
+
 
 }

@@ -64,4 +64,7 @@ public interface MemberMapper {
 	@Update("update Member set user_his = #{user_his} where user_id = #{user_id}")
 	public int hisEdit(Map<String, Object> req);
 
+	@Delete("delete FROM ClassMember where class_num= #{class_num}")
+	public void deleteClass(int class_num);
+
 }
