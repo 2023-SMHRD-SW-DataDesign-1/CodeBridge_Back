@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smhrd.bridge.entity.MarkResult;
+import com.smhrd.bridge.entity.MarkResultStu;
 import com.smhrd.bridge.mapper.MarkMapper;
 
 @Service
@@ -34,6 +35,11 @@ public class MarkService {
 	public List<MarkResult> getScore(String sub_num, String user_id) {
 		List<MarkResult> score_list = markMapper.getScore(sub_num, user_id);
 		return score_list;
+	}
+
+	public List<MarkResultStu> getDetailMark(Map<String, Object> req) {
+		List<MarkResultStu> list = markMapper.getDetailMark(req);
+		return list;
 	}
 
 }
