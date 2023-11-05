@@ -41,7 +41,6 @@ public class ClassController {
 	@RequestMapping("/write")
 	public String classWrite(@RequestBody Map<String, Object> req) {
 
-		System.out.println("req확인" + req.get("curriculum"));
 		List<Map<String, Object>> curriculumList = (List<Map<String, Object>>) req.get("curriculum");
 		StringBuilder result = new StringBuilder();
 
@@ -56,7 +55,6 @@ public class ClassController {
 			finalResult = finalResult.substring(0, finalResult.length() - 2); // 마지막 ", " 제거
 		}
 
-		System.out.println(finalResult);
 
 		Classroom classroom = new Classroom();
 
@@ -139,7 +137,6 @@ public class ClassController {
 	// 등록한 학생 반 승인
 	@PostMapping("accept")
 	public String acceptStu(@RequestBody Map<String, Object> req) {
-		System.out.println("req확인" + req);
 		String user_id = (String) req.get("user_id");
 		List<Integer> sub_num = (List<Integer>) req.get("sub_num");
 		int row = classService.acceptStu(user_id);
@@ -157,7 +154,6 @@ public class ClassController {
 	// 반 삭제버튼 눌러버렸
 	@PostMapping("/delete")
 	public int deleteClass(@RequestParam int class_num) {
-		System.out.println("class_num"+class_num);
 		//ClassMember 삭제
 		memberService.deleteClass(class_num);
 		//과목 used 0으로 변경

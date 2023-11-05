@@ -22,17 +22,13 @@ public class ImgController {
 
 	@PostMapping("/save")
 	public String handleFileUpload(@RequestParam("img") MultipartFile file) {
-		System.out.println("메서드 진입");
 		// 파일 이름 중복 방지를 위해 현재 시간을 추가
 		String fileName = StringUtils.cleanPath(System.currentTimeMillis() + "_" + file.getOriginalFilename());
-		System.out.println("fileName 확인 " + fileName);
 
 		try {
 			// 파일을 저장할 경로 설정
 			String uploadDir = UPLOAD_DIR;
-			System.out.println("uploadDir 확인 " + uploadDir);
 			String filePath = uploadDir + fileName;
-			System.out.println("filePath 확인 " + filePath);
 
 			
 			// 실제 파일 저장

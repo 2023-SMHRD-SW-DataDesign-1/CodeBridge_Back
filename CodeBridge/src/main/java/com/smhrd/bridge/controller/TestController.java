@@ -28,7 +28,6 @@ public class TestController {
 	// 테스트 작성
 	@RequestMapping("/write")
 	public void testWrite(@RequestBody Map<String, Object> req) {
-		System.out.println("받은 값 확인" + req);
 
 		String test_title = (String) req.get("test_title");
 		int test_level = (int) req.get("test_level");
@@ -47,7 +46,6 @@ public class TestController {
 		// 마지막 쉼표와 공백 제거
 		String test_condition = resultString.substring(0, resultString.length() - 4);
 
-		System.out.println("제한조건 확인" + test_condition);
 
 		Test test = new Test();
 		test.setTest_title(test_title);
@@ -59,22 +57,16 @@ public class TestController {
 
 //		int row = testService.testWrite(test);
 
-//		System.out.println("컨트롤러 들어왔나" + test);
-//
-//		System.out.println("row" + row);
 //		return row;
 	}
 
 	// 채점하기 위해 테스트 정보긁어오기
 	@RequestMapping("/mark")
 	public List<TestSubCode> testMark(@RequestBody Map<String, Object> map) {
-		System.out.println("json 확인" + map);
 		String test_num = (String) map.get("test_num");
-		System.out.println("번호 확" + test_num);
 		String user_id = (String) map.get("user_id");
 		List<TestSubCode> testItem = testService.getTestInfo(test_num, user_id);
 
-		System.out.println("testitem 확인" + testItem);
 
 		return testItem;
 	}

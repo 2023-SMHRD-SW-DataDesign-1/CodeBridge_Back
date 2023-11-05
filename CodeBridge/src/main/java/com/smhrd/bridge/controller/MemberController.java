@@ -29,7 +29,6 @@ public class MemberController {
 
 		String encryPassword = UserSha256.encrypt(member.getUser_pw());
 		member.setUser_pw(encryPassword);
-		System.out.println("암호화한패스워드:" + member.getUser_pw());
 
 		int row = memberService.memberJoin(member);
 
@@ -45,11 +44,9 @@ public class MemberController {
 
 	@RequestMapping("/login")
 	public String memberLogin(@RequestBody Member member) {
-		System.out.println("학생");
 		String user_pw = member.getUser_pw();
 		member.setUser_pw(UserSha256.encrypt(user_pw));
 		// 암호화 확인
-		System.out.println("user_pw : " + member.getUser_pw());
 
 		String mem = memberService.memberLogin(member);
 		String massage = null;
@@ -136,7 +133,6 @@ public class MemberController {
 
 	@RequestMapping("/changepic")
 	public String changePic(@RequestBody Map<String, Object> map) {
-		System.out.println("받은 값 확인" + map);
 		String user_id = (String) map.get("user_id");
 		String user_pic = (String) map.get("user_pic");
 		int row = memberService.changePic(user_id, user_pic);
@@ -153,7 +149,6 @@ public class MemberController {
 
 	@RequestMapping("/your-endpoint")
 	public String handleRequest() {
-		System.out.println("요청옴");
 		return "Request received!";
 	}
 

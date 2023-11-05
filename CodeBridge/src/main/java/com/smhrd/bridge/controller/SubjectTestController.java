@@ -24,11 +24,9 @@ public class SubjectTestController {
 
 	@RequestMapping("/submit")
 	public String subTest(@RequestBody Map<String, Object> req) {
-		System.out.println("들어온 값 " + req);
 		int sub_num = (Integer) req.get("sub_num");
 		List<Integer> test_num = (List<Integer>) req.get("test_num");
 
-		System.out.println("test_num확인" + test_num);
 
 		int row = subjectTestService.subTest(sub_num, test_num);
 		subService.updateTested(sub_num);

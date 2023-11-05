@@ -42,7 +42,6 @@ public class SubController {
 	// 반 넘버로 과목 찾기
 	@RequestMapping("/getsub")
 	public List<Subject> getSubs(@RequestParam int class_num) {
-		System.out.println("겟섭 옴");
 		List<Subject> sub = subservice.getSubs(class_num);
 		return sub;
 	}
@@ -66,11 +65,9 @@ public class SubController {
 	// 학생이 시험을 봤는지 확인하는 엔드포인트
 	@PostMapping("/istested")
 	public List<SubjectStudent> istested(@RequestBody Map<String, Object> req) {
-		System.out.println("tested진입" + req);
 		String sub_num = (String) req.get("sub_num");
 		String user_id = (String) req.get("user_id");
 		List<SubjectStudent> result = subservice.istested(sub_num, user_id);
-		System.out.println("tested 리절트 확인" + result);
 		return result;
 	}
 
@@ -78,7 +75,6 @@ public class SubController {
 	public List<Subject> getSubDetailList(@RequestBody List<Integer> req) {
 		String reqString = req.toString();
 		reqString = reqString.substring(1, reqString.length() - 1);
-		System.out.println(reqString);
 		List<Subject> sub_list = subservice.getSubDetailList(reqString);
 		return sub_list;
 	}
@@ -88,7 +84,6 @@ public class SubController {
 	public List<TotalScore> getTotalScore(@RequestParam int class_num) {
 		List<Integer> sub_list = subservice.getSubNumList(class_num);
 		String sub_num = sub_list.toString().substring(1, sub_list.toString().length() - 1);
-		System.out.println("섭넘 확인" + sub_num);
 		List<TotalScore> score_list = subservice.getTotalScore(sub_num);
 		return score_list;
 	}
