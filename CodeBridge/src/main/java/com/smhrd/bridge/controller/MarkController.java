@@ -54,4 +54,12 @@ public class MarkController {
 		return list;
 	}
 
+	// 학생 이의제기
+	@PostMapping("mark-objection")
+	public String markObjection(@RequestBody Map<String, Object> req) {
+		System.out.println("req 확인" + req);
+		int row = markService.markObjection(req);
+		return (row > 0 ? "success" : "fail");
+	}
+
 }

@@ -42,4 +42,9 @@ public class MarkService {
 		return list;
 	}
 
+	public int markObjection(Map<String, Object> req) {
+		int row = markMapper.markObjection(req);
+		return row;
+	}
+
 }
