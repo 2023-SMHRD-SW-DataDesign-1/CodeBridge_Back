@@ -15,6 +15,7 @@ public class MarkResultStu {
 	String sub_code;
 	String mark_result;
 	Double mark_score;
+	int objection;
 	String test_description;
 
 }
