@@ -13,8 +13,7 @@
 ## 📎 GitHub
 Front : https://github.com/2023-SMHRD-SW-DataDesign-1/CodeBridge_Front.git <br> 
 Back : https://github.com/2023-SMHRD-SW-DataDesign-1/CodeBridge_Back.git <br>
-Flask : https://github.com/2023-SMHRD-SW-DataDesign-1/CodeBridge_Python.git 
-<br>
+
 
 ## 📅 프로젝트 기간
 2023.10.13 ~ 2023.11.10 (4주)
